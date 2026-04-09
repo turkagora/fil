@@ -52,7 +52,7 @@ const i18n = {
     reviews_label: "Öğrenci Yorumları",
     reviews_title: "Öğrencilerim ne diyor?",
     booking_info_single: '<strong>Tek ders:</strong> Aşağıdaki takvimden doğrudan rezervasyon yapabilirsiniz. Bir slot seçin ve ödemeyi tek adımda tamamlayın.',
-    booking_info_package: '<strong>5\'li paket:</strong> Satın alma işleminin ardından size 24 saat içinde 5 adet rezervasyon linki ve tüm detayları e-posta ile göndereceğiz.',
+    booking_info_package: '<strong>5\'li ve 10\'lu paket:</strong> Satın alma işleminin ardından size 24 saat içinde ödemenize uygun olarak 5 ya da 10 adet rezervasyon linki ve tüm detayları e-posta ile göndereceğiz.',
     bmc: "Bana bir kahve ısmarlamak ister misin? ☕"
   },
   EN: {
@@ -107,7 +107,7 @@ const i18n = {
     reviews_label: "Student Reviews",
     reviews_title: "What my students say",
     booking_info_single: '<strong>Single lesson:</strong> Book directly from the calendar below. Pick a slot and complete payment in one step.',
-    booking_info_package: '<strong>5 lesson package:</strong> After your purchase, we\'ll send you 5 individual booking links and all the details by email within 24 hours.',
+    booking_info_package: '<strong>5-10 lesson package:</strong> After your purchase, We\'ll send you 5 or 10 individual booking links according to your purchase and all the details by email within 24 hours.',
     bmc: "Buy me a coffee ☕"
   },
   FR: {
@@ -162,7 +162,7 @@ const i18n = {
     reviews_label: "Avis des Étudiants",
     reviews_title: "Ce que disent mes élèves",
     booking_info_single: '<strong>Leçon unique :</strong> Réservez directement depuis le calendrier ci-dessous. Choisissez un créneau et finalisez le paiement en une étape.',
-    booking_info_package: '<strong>Pack 5 leçons :</strong> Après votre achat, nous vous enverrons 5 liens de réservation individuels et tous les détails par e-mail sous 24 heures.',
+    booking_info_package: '<strong>Paquet 5 and 10 leçons :</strong> Après votre achat, nous vous enverrons 5 ou 10 liens de réservation individuels selon votre achat et tous les détails par e-mail sous 24 heures.',
     bmc: "M'offrir un café ☕"
   }
 };
