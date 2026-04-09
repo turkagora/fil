@@ -57,8 +57,7 @@ function injectHeader() {
         <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" style="height:36px !important;width:auto !important;display:block;">
       </a>
       <a href="./lessons.html" class="btn-primary" data-i18n="hero_cta">Lesson Packages</a>
-	  </a>
-	<a href="./placement-test.html" class="btn-outline" data-i18n="hero_cta2">Placement Test</a>
+      <a href="./placement-test.html" class="btn-outline" data-i18n="hero_cta2">Placement Test</a>
     </div>
     <button class="hamburger" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -72,6 +71,7 @@ function injectHeader() {
   mobileNav.innerHTML = `
     ${buildNavLinks()}
     <a href="./lessons.html" data-i18n="nav_lessons" style="font-size:inherit;">Book a Lesson</a>
+    <a href="./placement-test.html" data-i18n="hero_cta2" style="font-size:inherit;">Placement Test</a>
     <a href="https://www.instagram.com/turkishwithturkofil/" target="_blank" rel="noopener noreferrer"
        style="display:flex;align-items:center;gap:0.5rem;border:none;padding:var(--space-3) 0;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -93,8 +93,9 @@ function injectHeader() {
       <button class="lang-btn" data-lang="FR">FR</button>
     </div>`;
 
-  document.body.insertBefore(mobileNav, document.body.firstChild);
+  // Önce nav, sonra mobileNav ekle — sıra önemli
   document.body.insertBefore(nav, document.body.firstChild);
+  document.body.insertBefore(mobileNav, nav.nextSibling);
 
   // Hamburger toggle
   const hamburger = nav.querySelector('.hamburger');
@@ -102,19 +103,25 @@ function injectHeader() {
     const isOpen = mobileNav.classList.toggle('open');
     hamburger.setAttribute('aria-expanded', String(isOpen));
   });
+
+  // Mobil nav linklerine tıklayınca menüyü kapat
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileNav.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
 }
 
 function initThemeToggle(btn) {
   const html = document.documentElement;
 
-  // Başlangıç teması: sistem tercihine bak, data-theme varsa onu kullan
   let currentTheme = html.getAttribute('data-theme');
   if (!currentTheme) {
     currentTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     html.setAttribute('data-theme', currentTheme);
   }
 
-  // İkonu temaya göre ayarla
   function updateIcon(theme) {
     btn.innerHTML = theme === 'dark' ? ICONS.sun : ICONS.moon;
     btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
@@ -162,12 +169,10 @@ function injectFooter() {
     <p class="footer-copy" data-i18n="footer_copy">© 2026 Turkofil. All rights reserved.</p>
   </div>`;
 
-  // Yüzen tema butonu
   const themeBtn = document.createElement('button');
   themeBtn.className = 'theme-float-btn';
   themeBtn.setAttribute('aria-label', 'Toggle theme');
 
-  // BMC widget script
   const bmcScript = document.createElement('script');
   bmcScript.setAttribute('data-name', 'BMC-Widget');
   bmcScript.setAttribute('data-cfasync', 'false');
@@ -184,7 +189,6 @@ function injectFooter() {
   document.body.appendChild(themeBtn);
   document.body.appendChild(bmcScript);
 
-  // Theme toggle'ı başlat — buton DOM'a eklendikten hemen sonra
   initThemeToggle(themeBtn);
 }
 
