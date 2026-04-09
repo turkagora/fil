@@ -464,8 +464,23 @@ footer {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .navbar-links, .navbar-actions .btn-primary, .navbar-actions .bmc-nav-btn { display: none; }
+  /* Navbar: tüm actions gizle, sadece lang-switcher kalsın */
+  .navbar-links { display: none; }
+  .navbar-actions .btn-primary,
+  .navbar-actions .btn-outline,
+  .navbar-actions .bmc-nav-btn,
+  .navbar-actions .navbar-ig-btn { display: none; }
+  .navbar-actions .lang-switcher { display: flex; }
+  .navbar-actions { gap: var(--space-2); }
   .hamburger { display: flex; }
+
+  /* Logo ismi biraz küçülsün */
+  .navbar-logo-name { font-size: 1.1rem; }
+
+  /* Lang switcher kompakt */
+  .lang-btn { padding: 2px 6px; font-size: 0.7rem; }
+  .lang-divider { display: none; }
+
   .hero-inner { grid-template-columns: 1fr; gap: var(--space-10); }
   .hero-media { order: -1; margin-top: 0; }
   .bio-grid { grid-template-columns: 1fr; }
@@ -473,7 +488,6 @@ footer {
   .footer-inner { flex-direction: column; align-items: flex-start; }
   .review-card { width: 280px; }
   .marquee-wrapper { mask-image: none; -webkit-mask-image: none; padding-left: var(--space-4); }
-  /* Mobilde tema butonu biraz daha küçük */
   .theme-float-btn { width: 48px; height: 48px; }
 }
 
