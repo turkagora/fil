@@ -70,8 +70,8 @@ function injectHeader() {
   mobileNav.setAttribute('aria-label', 'Mobile navigation');
   mobileNav.innerHTML = `
     ${buildNavLinks()}
-    <a href="./lessons.html" data-i18n="nav_lessons" style="font-size:inherit;">Book a Lesson</a>
-    <a href="./placement-test.html" data-i18n="hero_cta2" style="font-size:inherit;">Placement Test</a>
+    <a href="./lessons.html" data-i18n="hero_cta" class="mobile-btn-primary">Lesson Packages</a>
+    <a href="./placement-test.html" data-i18n="hero_cta2" class="mobile-btn-outline">Placement Test</a>
     <a href="https://www.instagram.com/turkishwithturkofil/" target="_blank" rel="noopener noreferrer"
        style="display:flex;align-items:center;gap:0.5rem;border:none;padding:var(--space-3) 0;">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
