@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — Turkofil</title>
+  <meta name="description" content="Learn about Turkofil, your Turkish language tutor.">
+  <link rel="icon" href="./assets/img/logo.png" type="image/jpeg">
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+
+<main class="page-wrapper">
+  <section class="section" aria-labelledby="bio-heading">
+    <div class="section-inner">
+      <span class="section-label reveal" data-i18n="bio_label">About Me</span>
+
+      <div class="bio-grid">
+
+        <!-- Photo -->
+        <div class="bio-photo-wrap reveal">
+          <img src="./assets/img/photo.jpg" alt="Turkofil portrait" width="300" height="400" loading="lazy">
+        </div>
+
+        <!-- Content -->
+        <div class="bio-content">
+          <h1 class="section-title reveal" id="bio-heading" data-i18n="bio_title">Hello, I'm Turkofil.</h1>
+
+          <p class="bio-intro reveal" data-i18n="bio_intro">
+            I love the Turkish language — and I want to share that love with you.
+          </p>
+
+          <div class="bio-body reveal">
+            <p data-i18n="bio_p1">I graduated in 2016 from Marmara University in Istanbul with a degree in Teaching French as a Foreign Language (FLE). I then completed a pedagogical internship at the prestigious Saint-Joseph French High School in Istanbul, gaining valuable teaching experience in a highly demanding and stimulating francophone environment.</p>
+            <p data-i18n="bio_p2">My academic journey later took me to Hungary, where I earned a Master's degree in International Relations from the Francophone University Centre at the University of Szeged. This experience broadened my understanding of global cultural and linguistic dynamics.</p>
+            <p data-i18n="bio_p3">Turkish is my native language, and I have been teaching it with great enthusiasm to students of all levels for several years. Drawing on my background in language didactics and practical experience, I offer structured, interactive lessons tailored to your specific needs. I speak fluent English and French professionally, alongside pre-intermediate Spanish and beginner Hungarian.</p>
+          </div>
+
+          <!-- Tags -->
+          <div class="bio-tags reveal" role="list" aria-label="Specializations">
+            <!-- Rendered by JS from bio_tags array -->
+          </div>
+
+          <!-- CTA -->
+          <div class="hero-actions reveal" style="margin-top:var(--space-4);">
+            <a href="https://www.instagram.com/turkishwithturkofil/" target="_blank" rel="noopener noreferrer" class="btn-outline social-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              <span data-i18n="hero_follow">Follow on Instagram</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="./assets/js/components.js"></script>
+<script src="./assets/js/app.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  function renderTags() {
+    const container = document.querySelector('.bio-tags');
+    if (!container) return;
+    const lang = document.documentElement.lang;
+    const langKey = lang === 'tr' ? 'TR' : lang === 'fr' ? 'FR' : 'EN';
+    const tags = i18n[langKey]?.bio_tags || [];
+    container.innerHTML = tags.map(t => `<span class="bio-tag" role="listitem">${t}</span>`).join('');
+  }
+  renderTags();
+  document.querySelectorAll('.lang-btn').forEach(b => b.addEventListener('click', () => setTimeout(renderTags, 10)));
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="tr" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Türkçe Seviye Belirleme Sınavı — Turkofil</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  
+</head>
+<body>
+
+<!-- Navbar injected by components.js -->
+<div id="navbar-placeholder"></div>
+<div id="mobile-nav-placeholder"></div>
+
+<main class="page-wrapper">
+  <section class="quiz-section">
+    <div class="quiz-inner">
+
+      <!-- Header — 3 dil destekli -->
+      <div class="section-label" data-i18n="quiz_label">Seviye Belirleme</div>
+      <h1 class="section-title" data-i18n="quiz_title">Türkçe Seviye Belirleme Sınavı</h1>
+
+      <div class="quiz-info">
+        <span data-i18n-html="quiz_info">
+          <strong>Bilgilendirme:</strong> Bu sınav seviyenizi belirlemek için hazırlanmıştır.
+          Lütfen soruları kendiniz cevaplayınız. Bilemediğiniz sorular için
+          <strong>Pas Geç</strong> bağlantısını kullanabilirsiniz. Sınavı bitirdiğinizde
+          doğru/yanlış görünür, bir seviye puanı hesaplanır ve cevaplarınızı
+          <strong>.txt</strong> olarak indirip öğretmeninize gönderebilirsiniz.
+        </span>
+      </div>
+
+      <!-- Progress -->
+      <div class="quiz-progress-wrap">
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="progressFill"></div>
+        </div>
+        <span class="quiz-progress-label" id="progressLabel">0 / 58</span>
+      </div>
+
+      <!-- Questions injected by JS -->
+      <form id="quizForm" autocomplete="off">
+        <div id="questionsContainer"></div>
+
+        <div class="quiz-submit">
+          <div class="quiz-warning" id="quizWarn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span id="warnText"></span>
+          </div>
+
+          <button type="button" class="btn-primary" id="submitBtn" style="padding:var(--space-3) var(--space-12);" data-i18n="quiz_submit">
+            Sınavı Tamamla
+          </button>
+
+          <div class="score-card" id="scoreCard">
+            <div class="score-big" id="scoreBig">—</div>
+            <div class="score-sub" id="scoreSub"></div>
+            <div class="score-stats">
+              <div class="score-stat"><span class="stat-n green" id="statOk">0</span><span class="stat-l" data-i18n="quiz_correct">Doğru</span></div>
+              <div class="score-stat"><span class="stat-n red"   id="statWr">0</span><span class="stat-l" data-i18n="quiz_wrong">Yanlış</span></div>
+              <div class="score-stat"><span class="stat-n"       id="statSk">0</span><span class="stat-l" data-i18n="quiz_skip">Boş</span></div>
+            </div>
+            <div class="score-badge" id="scoreBadge">—</div>
+            <p style="font-size:var(--text-sm);color:var(--color-text-muted);max-width:42ch;" data-i18n="quiz_download_hint">
+              Cevaplarınızı indirip öğretmeninize iletebilirsiniz.
+            </p>
+          </div>
+
+          <a class="btn-download" id="downloadBtn" href="#" download="turkofil-seviye-sonuclari.txt">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+              <polyline points="7 10 12 15 17 10"/>
+              <line x1="12" y1="15" x2="12" y2="3"/>
+            </svg>
+            <span data-i18n="quiz_download_btn">Cevaplarımı İndir (.txt)</span>
+          </a>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- Footer injected by components.js -->
+<div id="footer-placeholder"></div>
+
+<script src="./assets/js/components.js"></script>
+<script src="./assets/js/app.js"></script>
+
+<script>
+/* ===========================
+   ANTI-CHEAT
+=========================== */
+document.addEventListener('contextmenu', e => e.preventDefault());
+document.addEventListener('keydown', e => {
+  if (e.key === 'F12') e.preventDefault();
+  if ((e.ctrlKey||e.metaKey) && ['u','s','c','a'].includes(e.key.toLowerCase())) e.preventDefault();
+});
+
+/* ===========================
+   QUIZ TRANSLATIONS (i18n eklentisi)
+   Sayfa yüklendikten sonra mevcut
+   applyLang fonksiyonuyla entegre çalışır.
+=========================== */
+const quizI18n = {
+  TR: {
+    quiz_label: "Seviye Belirleme",
+    quiz_title: "Türkçe Seviye Belirleme Sınavı",
+    quiz_info: "<strong>Bilgilendirme:</strong> Bu sınav seviyenizi belirlemek için hazırlanmıştır. Lütfen soruları kendiniz cevaplayınız. Bilemediğiniz sorularda <strong>Pas Geç</strong> seçeneğini kullanabilirsiniz. Sınav bitince doğru/yanlış görünür, seviye hesaplanır ve cevaplarınızı <strong>.txt</strong> olarak indirip öğretmeninize gönderebilirsiniz.",
+    quiz_submit: "Sınavı Tamamla",
+    quiz_correct: "Doğru",
+    quiz_wrong: "Yanlış",
+    quiz_skip: "Boş",
+    quiz_download_hint: "Cevaplarınızı indirip öğretmeninize iletebilirsiniz.",
+    quiz_download_btn: "Cevaplarımı İndir (.txt)",
+    quiz_skip_btn: "Pas Geç / Seçimi Kaldır",
+    quiz_warn_incomplete: "eksik soru var. Yine de göndermek için tekrar tıklayın. (Soru numaraları: ",
+    quiz_fb_correct: "✓ Doğru!",
+    quiz_fb_wrong: "✗ Yanlış — Doğru cevap: ",
+    quiz_fb_skip: "⬜ Boş bırakıldı — Doğru cevap: ",
+    quiz_sub: "soruda",
+    quiz_report_title: "TURKOFIL — TÜRKÇE SEVİYE BELİRLEME SINAVI",
+    quiz_report_correct: "Doğru",
+    quiz_report_wrong: "Yanlış",
+    quiz_report_skip: "PAS",
+    quiz_report_level: "Tahmini Seviye",
+    quiz_level_a1: "A1 — Başlangıç",
+    quiz_level_a2: "A2 — Temel",
+    quiz_level_b1: "B1 — Orta",
+    quiz_level_b2: "B2 — Orta-Üstü",
+    quiz_level_c1: "C1 — İleri",
+    quiz_level_c1p: "C1+ — Çok İleri",
+  },
+  EN: {
+    quiz_label: "Level Assessment",
+    quiz_title: "Turkish Placement Test",
+    quiz_info: "<strong>Instructions:</strong> This test is designed to assess your Turkish level. Please answer all questions on your own. You may use <strong>Skip</strong> if you are unsure. When you finish, correct answers are revealed, a level is calculated, and you can download your results as a <strong>.txt</strong> file to share with your teacher.",
+    quiz_submit: "Finish & See Results",
+    quiz_correct: "Correct",
+    quiz_wrong: "Wrong",
+    quiz_skip: "Skipped",
+    quiz_download_hint: "Download your answers and send them to your teacher.",
+    quiz_download_btn: "Download My Results (.txt)",
+    quiz_skip_btn: "Skip / Clear Selection",
+    quiz_warn_incomplete: "questions unanswered. Click again to submit anyway. (Q numbers: ",
+    quiz_fb_correct: "✓ Correct!",
+    quiz_fb_wrong: "✗ Wrong — Correct answer: ",
+    quiz_fb_skip: "⬜ Skipped — Correct answer: ",
+    quiz_sub: "out of",
+    quiz_report_title: "TURKOFIL — TURKISH PLACEMENT TEST",
+    quiz_report_correct: "Correct",
+    quiz_report_wrong: "Wrong",
+    quiz_report_skip: "SKIPPED",
+    quiz_report_level: "Estimated Level",
+    quiz_level_a1: "A1 — Beginner",
+    quiz_level_a2: "A2 — Elementary",
+    quiz_level_b1: "B1 — Intermediate",
+    quiz_level_b2: "B2 — Upper-Intermediate",
+    quiz_level_c1: "C1 — Advanced",
+    quiz_level_c1p: "C1+ — Proficient",
+  },
+  FR: {
+    quiz_label: "Évaluation de Niveau",
+    quiz_title: "Test de Placement en Turc",
+    quiz_info: "<strong>Instructions :</strong> Ce test est conçu pour évaluer votre niveau de turc. Répondez aux questions par vous-même. Vous pouvez utiliser <strong>Passer</strong> si vous n'êtes pas sûr(e). À la fin, les bonnes réponses s'affichent, un niveau est calculé et vous pouvez télécharger vos résultats en <strong>.txt</strong> pour les envoyer à votre professeur.",
+    quiz_submit: "Terminer le test",
+    quiz_correct: "Correctes",
+    quiz_wrong: "Incorrectes",
+    quiz_skip: "Non répondues",
+    quiz_download_hint: "Téléchargez vos réponses et envoyez-les à votre professeur.",
+    quiz_download_btn: "Télécharger mes résultats (.txt)",
+    quiz_skip_btn: "Passer / Effacer la sélection",
+    quiz_warn_incomplete: "questions sans réponse. Cliquez à nouveau pour soumettre quand même. (Questions : ",
+    quiz_fb_correct: "✓ Correct !",
+    quiz_fb_wrong: "✗ Incorrect — Bonne réponse : ",
+    quiz_fb_skip: "⬜ Non répondu — Bonne réponse : ",
+    quiz_sub: "sur",
+    quiz_report_title: "TURKOFIL — TEST DE PLACEMENT EN TURC",
+    quiz_report_correct: "Correctes",
+    quiz_report_wrong: "Incorrectes",
+    quiz_report_skip: "PASSÉ",
+    quiz_report_level: "Niveau estimé",
+    quiz_level_a1: "A1 — Débutant",
+    quiz_level_a2: "A2 — Élémentaire",
+    quiz_level_b1: "B1 — Intermédiaire",
+    quiz_level_b2: "B2 — Intermédiaire supérieur",
+    quiz_level_c1: "C1 — Avancé",
+    quiz_level_c1p: "C1+ — Maîtrise",
+  }
+};
+
+/* Merge quiz translations into main i18n when it's ready */
+function mergeQuizI18n() {
+  if (typeof i18n !== 'undefined') {
+    ['TR','EN','FR'].forEach(lang => {
+      Object.assign(i18n[lang], quizI18n[lang]);
+    });
+    // Re-apply current language to pick up new keys
+    if (typeof applyLang === 'function' && typeof currentLang !== 'undefined') {
+      applyLang(currentLang);
+    }
+  } else {
+    setTimeout(mergeQuizI18n, 80);
+  }
+}
+
+/* ===========================
+   QUESTIONS DATA
+=========================== */
+const QUESTIONS = [
+  { n:1,  q:"Bu kim?",                                        opts:["Mustafa","masa","araba","sinema"],                                               a:0 },
+  { n:2,  q:"Bu ne?",                                         opts:["kedi","öğretmen","Murat","çocuklar"],                                            a:0 },
+  { n:3,  q:"Benim ___ Zeynep.",                              opts:["yaşım","boyum","adım","kilom"],                                                  a:2 },
+  { n:4,  q:"Burası neresi?",                                 opts:["çiçekler","çanta","Ayşe","İş yeri"],                                             a:3 },
+  { n:5,  q:"A: Nereden geliyorsun? B: ___",                  opts:["İstanbulluyum.","Çin'den geliyorum.","Fransa'ya geliyorum.","Almanya'da geliyorum."], a:1 },
+  { n:6,  q:"Kaç yaşındasın?",                                opts:["24 yaşındasın.","20 yaşındalar.","15 yaşındayız.","16 yaşındayım."],              a:3 },
+  { n:7,  q:"Çilek ne renk?",                                 opts:["mavi","kırmızı","sarı","yeşil"],                                                 a:1 },
+  { n:8,  q:"Nerede çalışıyorsun?",                           opts:["Markette çalışıyorum.","Marketteyim.","Marketteyiz.","Markette çalışmış."],      a:0 },
+  { n:9,  q:"Bu kalem ___?",                                  opts:["kim","kimin","onun","senin"],                                                    a:1 },
+  { n:10, q:"Biz tiyatro ___ gidiyoruz.",                     opts:["-dan","-ya","-da","-a"],                                                         a:1 },
+  { n:11, q:"Öğrenciler sınıf ___ çıkıyorlar.",              opts:["-ı","-ta","-dan","-tan"],                                                        a:3 },
+  { n:12, q:"Annem bahçe ___ oturuyor.",                      opts:["-ye","-te","-de","-den"],                                                        a:2 },
+  { n:13, q:"Ben vanilyalı dondurma ___ çok seviyorum.",      opts:["-yı","-ya","-nin","-da"],                                                        a:0 },
+  { n:14, q:"Selin, böcek ___ çok korkuyor.",                 opts:["-den","-te","-e","-ten"],                                                        a:3 },
+  { n:15, q:"___ bir kitap vereceğim.",                       opts:["Sen","Seni","Sana","Sende"],                                                     a:2 },
+  { n:16, q:"Altı aydır iş arıyor, hâlâ ___.",               opts:["çalışıyor.","işsiz.","evsiz.","işi var."],                                       a:1 },
+  { n:17, q:"Sen doktor ___?",                                opts:["musunuz?","mu?","musun?","müsün?"],                                              a:2 },
+  { n:18, q:"Bir saattir yağmur yağ ___.",                    opts:["-acak.","-ar.","-ıyor.","-dı."],                                                 a:2 },
+  { n:19, q:"Saat 07.50. (Nasıl söylersiniz?)",               opts:["Saat sekize çeyrek kala","Saat sekizde","Saat sekize on var","Saat sekizi on geçe"], a:2 },
+  { n:20, q:"Dün gece saat kaçta ___?",                       opts:["yattın","kalktın","uçtun","sattın"],                                             a:0 },
+  { n:21, q:"Biz geçen yıl tatilde Antalya'ya git ___.",      opts:["-tim.","-tik.","-deriz.","-dik."],                                               a:1 },
+  { n:22, q:"Siz dün gece sarhoş mu ol ___ ?",                opts:["-dular ?","-urlar ?","-dunuz ?","-dün ?"],                                      a:2 },
+  { n:23, q:"Ben daha önce hiç sigara iç ___.",               opts:["-tim.","-iyorum.","-medim.","-miyorum."],                                        a:2 },
+  { n:24, q:"Biz gelecek yaz Mısır'a ___.",                   opts:["düşeceğiz","yiyeceğiz","gideceğiz","seveceğiz"],                                 a:2 },
+  { n:25, q:"Kızım, bu yıl üniversiteden mezun ol ___.",      opts:["-acak.","-du.","-acağım.","-acaklar."],                                          a:0 },
+  { n:26, q:"Babam her sabah bir fincan kahve iç ___.",       opts:["-ir.","-er.","-ur.","-miş"],                                                     a:1 },
+  { n:27, q:"İçeri gir ___ kızın adı Leyla.",                 opts:["-diği","-er","-dik","-en"],                                                     a:3 },
+  { n:28, q:"Gazetede okudum. Dün İstanbul'da bir kaza ol ___.", opts:["-du.","-muş.","-uyor.","-muğum."],                                            a:1 },
+  { n:29, q:"Ben ___ araba ___ kırmızı.",                     opts:["-im / -m","-im / -n","-im / -mi","-im / -miz"],                                 a:0 },
+  { n:30, q:"Keşke şimdi denizde yüz ___.",                   opts:["-ersem.","-erim.","-uyorum.","-sem."],                                           a:3 },
+  { n:31, q:"Öğretmen basit bir soru sordu. (Altı çizili kelimeye anlamca en yakın?)", opts:["zor","bildiğim","karmaşık","kolay"],                   a:3 },
+  { n:32, q:"Dün izle ___ film çok romantikti.",              opts:["-yen","-diğim","-en","-dik"],                                                   a:1 },
+  { n:33, q:"___ dışarıya çıkmak istemiyor.",                 opts:["Kimse","Herkes","Her biri","Hepsi"],                                             a:0 },
+  { n:34, q:"Sporlar ___ en çok yüzmeyi severim.",            opts:["önünde","yanında","içinde","arkasında"],                                        a:2 },
+  { n:35, q:"Uyuyamadım ___ çok gürültü vardı.",              opts:["yeni sıra","çünkü","ama","bu yüzden"],                                          a:1 },
+  { n:36, q:"Boyacı, ev ___ duvar ___ iki günde boyadı.",     opts:["-i / -ına","-nin / -ı","-in / -indan","-in / -ını"],                            a:3 },
+  { n:37, q:"Ben çok iyi gitar çal ___.",                     opts:["-abilir.","-abilirsin.","-ebilirim.","-abilirm."],                               a:2 },
+  { n:38, q:"Yan dairede 3 gündür tadilat var. Bu gürültüye nasıl ___ ?", opts:["katlanıyorsun","dinliyorsun","aldanıyorsun","sesleniyorsun"],        a:0 },
+  { n:39, q:"Hasta ___ ağırlaşıyor. (Hangisi uygun olmaz?)", opts:["gün geçtikçe","günden güne","her geçen gün","her zaman"],                        a:3 },
+  { n:40, q:"Ben denizde yüz ___ çok korkarım.",              opts:["-meye","-mekten","-mey","-mek"],                                                a:1 },
+  { n:41, q:"Kızım resim yap ___ çok sever.",                 opts:["-maya","-maktan","-mak","-mayı"],                                               a:3 },
+  { n:42, q:"Bütün gün evi temizledin. Yorgun ol ___.",       opts:["-du.","-muş.","-acak.","-malısın."],                                             a:3 },
+  { n:43, q:"İlkokuldan mezun ol ___ babası ona bisiklet aldı.", opts:["-urken","-up","-duğunda","-acağı zaman"],                                    a:2 },
+  { n:44, q:"Kapı ___. Kapıyı açar mısın?",                   opts:["bağırıyor.","çalıyor.","koşuyor.","yıkılıyor."],                                a:1 },
+  { n:45, q:"Annem fareyi gör ___ gör ___ bayıldı.",          opts:["-ür / -mez","-mez / -ür","-ür / -ür","-mez / -mez"],                           a:0 },
+  { n:46, q:"Sinemaya git ___ bilet aldık.",                   opts:["-mez","-meden önce","-den önce","-den sonra"],                                 a:1 },
+  { n:47, q:"Ben her zaman yemek pişir ___ şarkı söylerim.", opts:["-ken","-erken","-irken","-meyi"],                                                a:2 },
+  { n:48, q:"Neden evdesin? İşte olman ___.",                 opts:["şart.","lazım.","gerekiyordu.","gerekmiş."],                                    a:2 },
+  { n:49, q:"Sağlığımızı korumak için sigara iç ___.",        opts:["-meliyiz.","-memiz lazım.","-meye mecburuz.","-memeliyiz."],                     a:3 },
+  { n:50, q:"Dün banka hırsızlar tarafından soy ___.",        opts:["-du.","-uldu.","-ulur.","-ulacak."],                                             a:1 },
+  { n:51, q:"Arkadaşlarımla ara sıra futbol oynuyorum. (Eş anlamlısı?)", opts:["bazen","her zaman","sık sık","genellikle"],                         a:0 },
+  { n:52, q:"Yağmur yağ ___ gezmeye gittik.",                 opts:["-madığı halde","-dığı rağmen","-dığı halde","-dığı için"],                      a:2 },
+  { n:53, q:"Aşağıdaki kelimelerden hangisinin yazımı yanlıştır?", opts:["hafifçe","açıkça","simitci","yavaşça"],                                    a:2 },
+  { n:54, q:"Güzel bir tatil oldu. Hem gezmek hem de burayı ___ görmek çok güzeldi.", opts:["severek","hoş","mutlaka","yakından"],                   a:3 },
+  { n:55, q:"Bu maçı pek ciddiye almadığı anlaşılıyor. (Altı çizili söze anlama en yakın?)", opts:["duymadığı","düşünmediği","önem vermediği","bilmediği"], a:2 },
+  { n:56, q:"Japonya'daki depremde binaların bazıları sağlam kalmış olsa da ___ çoğu yıkılmış.", opts:["neredeyse","bazen","tamamı","yaklaşık"],     a:0 },
+  { n:57, q:"Kardeşleriyle çok iyi ___.",                     opts:["anlaşır.","içer.","bakar.","yapar."],                                           a:0 },
+  { n:58, q:"Fotoğrafı, kanıt olarak gösterdi. (Eş anlamlısı?)", opts:["şekil","delil","resim","veri"],                                              a:1 },
+  { n:59, q:"Arabayı gündüz gözüyle tamir edelim. (Ne anlama gelir?)", opts:["sıcak havada","güneşli havada","gözlükle","gün ışığında"],              a:3 },
+  { n:60, q:"Buraya gelince beni ara. (Aynı anlamı veren cümle?)", opts:["Buraya gelirken beni ara.","Buraya gelmeden beni ara.","Buraya gelmeye çalış.","Buraya geldiğin zaman beni ara."], a:3 },
+];
+
+const LETTERS = ['a','b','c','d'];
+const LEVELS_KEY = [
+  {min:0,  max:15, key:"quiz_level_a1"},
+  {min:16, max:25, key:"quiz_level_a2"},
+  {min:26, max:35, key:"quiz_level_b1"},
+  {min:36, max:43, key:"quiz_level_b2"},
+  {min:44, max:52, key:"quiz_level_c1"},
+  {min:53, max:60, key:"quiz_level_c1p"},
+];
+
+let warnShown = false;
+const TOTAL = QUESTIONS.length;
+
+/* ===========================
+   BUILD
+=========================== */
+function buildQuiz() {
+  const c = document.getElementById('questionsContainer');
+  document.getElementById('progressLabel').textContent = '0 / ' + TOTAL;
+  QUESTIONS.forEach((q, i) => {
+    const div = document.createElement('div');
+    div.className = 'question-card reveal.visible';
+    div.id = 'qc' + i;
+    div.innerHTML = `
+      <div class="q-num">Soru ${q.n}</div>
+      <div class="q-text">${q.q}</div>
+      <div class="options-grid">
+        ${q.opts.map((o,oi) => `
+          <label class="opt-label" id="lbl_${i}_${oi}">
+            <input type="radio" name="q${i}" value="${oi}" onchange="onPick(${i})">
+            <span class="opt-circle"></span>
+            <span>${LETTERS[oi]}) ${o}</span>
+          </label>`).join('')}
+      </div>
+      <span class="skip-link" onclick="skipQ(${i})" data-i18n="quiz_skip_btn">Pas Geç / Seçimi Kaldır</span>
+      <div class="q-feedback" id="fb_${i}"></div>`;
+    c.appendChild(div);
+  });
+  updateProgress();
+}
+
+function onPick(i) {
+  document.getElementById('qc'+i).classList.add('is-answered');
+  updateProgress();
+}
+function skipQ(i) {
+  document.querySelectorAll(`input[name="q${i}"]`).forEach(r => r.checked = false);
+  document.getElementById('qc'+i).classList.remove('is-answered');
+  updateProgress();
+}
+function getAns(i) {
+  const el = document.querySelector(`input[name="q${i}"]:checked`);
+  return el ? parseInt(el.value) : null;
+}
+function updateProgress() {
+  const done = QUESTIONS.filter((_,i) => getAns(i) !== null).length;
+  document.getElementById('progressFill').style.width = Math.round(done/TOTAL*100)+'%';
+  document.getElementById('progressLabel').textContent = done + ' / ' + TOTAL;
+}
+
+/* ===========================
+   SUBMIT
+=========================== */
+document.getElementById('submitBtn').addEventListener('click', () => {
+  const unanswered = QUESTIONS.filter((_,i) => getAns(i) === null);
+  if (unanswered.length > 0 && !warnShown) {
+    const t = getCurrentT();
+    document.getElementById('warnText').textContent =
+      unanswered.length + ' ' + t.quiz_warn_incomplete + unanswered.map(q=>q.n).join(', ') + ')';
+    document.getElementById('quizWarn').classList.add('show');
+    warnShown = true;
+    return;
+  }
+  finalise();
+});
+
+function getCurrentT() {
+  const lang = (typeof currentLang !== 'undefined') ? currentLang : 'TR';
+  return Object.assign({}, quizI18n[lang]);
+}
+
+function finalise() {
+  const t = getCurrentT();
+  let ok=0, wr=0, sk=0;
+
+  QUESTIONS.forEach((q,i) => {
+    const ans = getAns(i);
+    const card = document.getElementById('qc'+i);
+    const fb   = document.getElementById('fb_'+i);
+    card.querySelectorAll('.opt-label').forEach(l => l.classList.add('locked'));
+
+    if (ans === null) {
+      sk++;
+      card.querySelectorAll('.opt-label')[q.a].classList.add('res-correct');
+      fb.innerHTML = `<span class="fb-wrong">${t.quiz_fb_skip}${LETTERS[q.a]}) ${q.opts[q.a]}</span>`;
+    } else if (ans === q.a) {
+      ok++;
+      card.classList.add('is-correct');
+      document.getElementById(`lbl_${i}_${ans}`).classList.add('res-correct');
+      fb.innerHTML = `<span class="fb-correct">${t.quiz_fb_correct}</span>`;
+    } else {
+      wr++;
+      card.classList.add('is-wrong');
+      document.getElementById(`lbl_${i}_${ans}`).classList.add('res-wrong');
+      document.getElementById(`lbl_${i}_${q.a}`).classList.add('res-correct');
+      fb.innerHTML = `<span class="fb-wrong">${t.quiz_fb_wrong}${LETTERS[q.a]}) ${q.opts[q.a]}</span>`;
+    }
+    fb.classList.add('show');
+    card.classList.remove('is-answered');
+  });
+
+  const levelObj = LEVELS_KEY.find(l => ok >= l.min && ok <= l.max) || LEVELS_KEY[LEVELS_KEY.length-1];
+  const levelStr = t[levelObj.key];
+
+  document.getElementById('scoreBig').textContent = ok + ' / ' + TOTAL;
+  document.getElementById('scoreSub').textContent = ok + ' ' + t.quiz_sub + ' ' + TOTAL;
+  document.getElementById('statOk').textContent = ok;
+  document.getElementById('statWr').textContent = wr;
+  document.getElementById('statSk').textContent = sk;
+  document.getElementById('scoreBadge').textContent = levelStr;
+  document.getElementById('scoreCard').classList.add('show');
+  document.getElementById('submitBtn').style.display = 'none';
+  document.getElementById('quizWarn').classList.remove('show');
+
+  buildDownload(ok, wr, sk, levelStr, t);
+  document.getElementById('scoreCard').scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+/* ===========================
+   DOWNLOAD
+=========================== */
+function buildDownload(ok, wr, sk, level, t) {
+  const lines = [];
+  const now = new Date().toLocaleDateString('tr-TR');
+  lines.push(t.quiz_report_title);
+  lines.push('='.repeat(50));
+  lines.push('Tarih / Date: ' + now);
+  lines.push(`${t.quiz_report_correct}: ${ok}  |  ${t.quiz_report_wrong}: ${wr}  |  ${t.quiz_report_skip}: ${sk}`);
+  lines.push(`${t.quiz_report_level}: ${level}`);
+  lines.push('');
+  QUESTIONS.forEach((q, i) => {
+    const ans = getAns(i);
+    const status = ans === null ? t.quiz_report_skip : ans === q.a ? t.quiz_report_correct : t.quiz_report_wrong;
+    const given  = ans !== null ? `${LETTERS[ans]}) ${q.opts[ans]}` : '—';
+    const corr   = `${LETTERS[q.a]}) ${q.opts[q.a]}`;
+    lines.push(`S${q.n}: ${q.q}`);
+    lines.push(`  Cevabınız  : ${given} [${status}]`);
+    if (ans !== q.a) lines.push(`  Doğru cevap: ${corr}`);
+    lines.push('');
+  });
+
+  const blob = new Blob([lines.join('\n')], {type:'text/plain;charset=utf-8'});
+  const btn  = document.getElementById('downloadBtn');
+  btn.href   = URL.createObjectURL(blob);
+  btn.classList.add('show');
+}
+
+/* ===========================
+   BOOT
+=========================== */
+document.addEventListener('DOMContentLoaded', () => {
+  buildQuiz();
+  mergeQuizI18n();
+});
+</script>
+</body>
+
+
+</html>
