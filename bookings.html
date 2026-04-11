@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings - Turkofil</title>
+  <link rel="icon" href="./assets/img/logo.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <!-- Navbar and Mobile Nav will be injected by components.js -->
+
+  <main class="page-wrapper">
+    
+    <section class="section">
+<div class="section-inner" style="max-width: var(--content-default);">
+        
+        <span class="section-label reveal" data-i18n="navbookings">My Bookings</span>
+        <h1 class="section-title reveal" data-i18n="bookingstitle">Log in to your Turkofil account</h1>
+
+        <!-- Bilgi Kutusu -->
+        <div class="booking-info-box reveal" style="margin-top: var(--space-2); margin-bottom: var(--space-8);">
+          <div class="booking-info-row">
+            <i data-lucide="info" style="flex-shrink:0; margin-top:2px;"></i>
+            <span data-i18n-html="bookingsloginhint">To manage your bookings, please click the <strong>Register or Log in</strong> button at the <strong>bottom of the calendar below.</strong></span>
+          </div>
+          
+          <div class="booking-info-divider"></div>
+
+          <div class="booking-info-row">
+            <span style="display: flex; flex-direction: column; gap: var(--space-3);">
+              <span data-i18n="bookingsintro" style="font-weight: 600; color: var(--color-text);">After you log in, you can:</span>
+              <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-2);">
+                <li style="display: flex; align-items: flex-start; gap: var(--space-2);">
+                  <div style="width: 5px; height: 5px; border-radius: 50%; background: var(--color-primary); flex-shrink: 0; margin-top: 8px;"></div>
+                  <span data-i18n="bookingsli1">View your upcoming and past Turkish lessons</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: var(--space-2);">
+                  <div style="width: 5px; height: 5px; border-radius: 50%; background: var(--color-primary); flex-shrink: 0; margin-top: 8px;"></div>
+                  <span data-i18n="bookingsli2">Reschedule a lesson to a different time (if it’s still allowed by our 24‑hour rule)</span>
+                </li>
+                <li style="display: flex; align-items: flex-start; gap: var(--space-2);">
+                  <div style="width: 5px; height: 5px; border-radius: 50%; background: var(--color-primary); flex-shrink: 0; margin-top: 8px;"></div>
+                  <span data-i18n="bookingsli3">See how many lessons you have left in your package</span>
+                </li>
+              </ul>
+            </span>
+          </div>
+
+          <div class="booking-info-divider"></div>
+
+
+        <!-- Breely Embed -->
+        <div class="cal-embed-wrap reveal" id="turkofil-login-form-container">
+          <script type="text/javascript" src="https://turkofil.breely.com/embed.js?url=/form/17066"></script>
+          <div class="breely-inline"></div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer will be injected by components.js -->
+
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/app.js"></script>
+  <script>lucide.createIcons();</script>
+</body>
+</html>
