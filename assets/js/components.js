@@ -3,6 +3,7 @@
 const NAV_LINKS = [
   { href: './index.html', i18nKey: 'nav_home' },
   { href: './bio.html',   i18nKey: 'nav_bio' },
+  { href: './bookings.html',   i18nKey: 'navbookings' },
 ];
 
 const ICONS = {

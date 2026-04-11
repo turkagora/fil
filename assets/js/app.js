@@ -37,7 +37,7 @@ const i18n = {
     plan2_name: "5'li Ders Paketi",
 	plan3_name: "10'lu Ders Paketi",
     plan2_f1: "5 × 45 dakikalık birebir ders",
-    plan2_f2: "Size özel rezervasyon linki",
+    plan2_f2: "Breely müşteri portalı üzerinden randevularınızı yönetin",
     plan2_f3: "24 saat öncesine kadar erteleme esnekliği",
     plan2_f4: "BMC üzerinden güvenli ödeme",
 	plan3_f1: "10 x 45 dakikalık birebir ders",
@@ -53,7 +53,16 @@ const i18n = {
     reviews_title: "Öğrencilerim ne diyor?",
     booking_info_single: '<strong>Tek ders:</strong> Aşağıdaki takvimden doğrudan rezervasyon yapabilirsiniz. Bir slot seçin ve ödemeyi tek adımda tamamlayın.',
     booking_info_package: '<strong>5\'li ve 10\'lu paket:</strong> Satın alma işleminin ardından size 24 saat içinde ödemenize uygun olarak 5 ya da 10 adet rezervasyon linki ve tüm detayları e-posta ile göndereceğiz.',
-    bmc: "Bana bir kahve ısmarlamak ister misin? ☕"
+    bmc: "Bana bir kahve ısmarlamak ister misin? ☕",
+	
+	
+navbookings: "Rezervasyonlarım",
+bookingstitle: "Turkofil hesabınıza giriş yapın",
+bookingsloginhint: "Rezervasyonlarınızı yönetmek için aşağıdaki <strong>takvim'in altındaki </strong><strong>Register or Log in</strong> bağlantısına tıklayın.",
+bookingsintro: "Giriş yaptıktan sonra şunları yapabilirsiniz:",
+bookingsli1: "Yaklaşan ve geçmiş Türkçe derslerinizi görüntüleyebilirsiniz",
+bookingsli2: "Bir dersi, 24 saat öncesine kadar farklı bir tarihe erteleyebilirsiniz",
+bookingsli3: "Paketinizde kaç ders kaldığını görebilirsiniz"
   },
   EN: {
     nav_home: "Home",
@@ -92,7 +101,7 @@ const i18n = {
     plan2_name: "5 Lesson Package",
 	plan3_name: "10 Lesson Package",
     plan2_f1: "5 × 45 min private lessons",
-    plan2_f2: "Private booking link",
+    plan2_f2: "Manage bookings on the Breely client portal",
     plan2_f3: "Flexible rescheduling (up to 24h before)",
     plan2_f4: "Secure purchase via BMC",
 	plan3_f1: "10 x 45 min. private lessons",
@@ -108,7 +117,15 @@ const i18n = {
     reviews_title: "What my students say",
     booking_info_single: '<strong>Single lesson:</strong> Book directly from the calendar below. Pick a slot and complete payment in one step.',
     booking_info_package: '<strong>5-10 lesson package:</strong> After your purchase, We\'ll send you 5 or 10 individual booking links according to your purchase and all the details by email within 24 hours.',
-    bmc: "Buy me a coffee ☕"
+    bmc: "Buy me a coffee ☕",
+	
+navbookings: "My Bookings",
+bookingstitle: "Log in to your Turkofil account",
+bookingsloginhint: "To manage your bookings, please click the <strong>Register or Log in</strong> button at the <strong>bottom of the calendar below.</strong>",
+bookingsintro: "After you log in, you can:",
+bookingsli1: "View your upcoming and past Turkish lessons",
+bookingsli2: "Reschedule a lesson to a different time (if it’s still allowed by our 24‑hour rule)",
+bookingsli3: "See how many lessons you have left in your package"
   },
   FR: {
     nav_home: "Accueil",
@@ -147,7 +164,7 @@ const i18n = {
     plan2_name: "Forfait de 5 cours",
 	plan3_name: "Forfait de 10 cours",
     plan2_f1: "5 × 45 min de cours particuliers",
-    plan2_f2: "Lien de réservation privé",
+    plan2_f2: "Gérer les réservations sur le portail client Breely",
     plan2_f3: "Report flexible (jusqu'à 24h avant)",
     plan2_f4: "Achat sécurisé via BMC",
 	plan3_f1: "10 x 45 min de cours particuliers",
@@ -163,7 +180,15 @@ const i18n = {
     reviews_title: "Ce que disent mes élèves",
     booking_info_single: '<strong>Leçon unique :</strong> Réservez directement depuis le calendrier ci-dessous. Choisissez un créneau et finalisez le paiement en une étape.',
     booking_info_package: '<strong>Paquet 5 and 10 leçons :</strong> Après votre achat, nous vous enverrons 5 ou 10 liens de réservation individuels selon votre achat et tous les détails par e-mail sous 24 heures.',
-    bmc: "M'offrir un café ☕"
+    bmc: "M'offrir un café ☕",
+	
+navbookings: "Mes réservations",
+bookingstitle: "Connectez-vous à votre compte Turkofil",
+bookingsloginhint: "Pour gérer vos réservations, veuillez cliquer sur le bouton <strong>Register or Log in</strong> <strong>en bas du calendrier ci-dessous.</strong>",
+bookingsintro: "Après vous être connecté(e), vous pouvez :",
+bookingsli1: "Voir vos cours de turc à venir et passés",
+bookingsli2: "Reprogrammer un cours à un autre horaire (si cela est encore autorisé par notre règle de 24 heures)",
+bookingsli3: "Voir combien de cours il vous reste dans votre forfait"
   }
 };
 
