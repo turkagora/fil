@@ -4,69 +4,358 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Bookings - Turkofil</title>
-  <link rel="icon" href="./assets/img/logo.jpg" type="image/jpeg">
+  <link rel="icon" href="./assets/img/logo.png" type="image/jpeg">
   <link rel="stylesheet" href="./assets/css/style.css">
   <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* ── Slider Styles ── */
+    .slider-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: var(--color-surface);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-sm);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+
+    .slider-track {
+      display: flex;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+    }
+
+    .slide {
+      min-width: 100%;
+      padding: var(--space-8) var(--space-10);
+      box-sizing: border-box;
+    }
+
+    .step-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    .step-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .step-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--color-primary);
+      color: white;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: var(--text-sm);
+    }
+
+    .step-title {
+      font-size: var(--text-xl);
+      font-weight: 700;
+      color: var(--color-text);
+      line-height: 1.2;
+    }
+
+    .step-desc {
+      font-size: var(--text-base);
+      color: var(--color-text-muted);
+      line-height: 1.6;
+    }
+
+    .step-visual img {
+      width: 100%;
+      border-radius: var(--radius-lg);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.1);
+      box-shadow: var(--shadow-md);
+      display: block;
+    }
+
+    /* Controls */
+    .slider-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-4) var(--space-6);
+      background: var(--color-surface-offset);
+      border-top: 1px solid oklch(from var(--color-text) l c h / 0.05);
+    }
+
+    .nav-btns {
+      display: flex;
+      gap: var(--space-2);
+    }
+
+    .slider-btn {
+      background: var(--color-surface);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.1);
+      padding: 10px;
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      display: flex;
+      color: var(--color-text);
+      transition: all 0.2s;
+    }
+
+    .slider-btn:hover:not(:disabled) {
+      background: var(--color-primary);
+      color: white;
+      border-color: var(--color-primary);
+    }
+
+    .slider-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    #slideIndicator {
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--color-text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Legend Styles ── */
+    .slot-legend-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-4);
+      margin-top: var(--space-6);
+      margin-bottom: var(--space-8);
+    }
+
+    .slot-legend-card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      background: var(--color-surface);
+      border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .slot-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+    .slot-dot-yours { background: #7a0a0a; }
+    .slot-dot-taken { background: #7a0a0a; opacity: 0.45; }
+    .slot-dot-free  { background: #4a90c8; }
+
+    .cal-embed-wrap {
+      margin-top: var(--space-8);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+      box-shadow: var(--shadow-md);
+    }
+
+    .cal-embed-wrap iframe { display: block; width: 100%; height: 800px; border: none; }
+
+    @media (max-width: 768px) {
+      .step-content { grid-template-columns: 1fr; gap: var(--space-6); }
+      .slide { padding: var(--space-6) var(--space-4); }
+      .step-visual { order: 2; }
+      .step-info { order: 1; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Navbar and Mobile Nav will be injected by components.js -->
-
   <main class="page-wrapper">
-    
     <section class="section">
-<div class="section-inner" style="max-width: var(--content-default);">
-        
+      <div class="section-inner" style="max-width: var(--content-default);">
+
         <span class="section-label reveal" data-i18n="navbookings">My Bookings</span>
-        <h1 class="section-title reveal" data-i18n="bookingstitle">Log in to your Turkofil account</h1>
+        <h1 class="section-title reveal" data-i18n="bookingstitle">Manage your lessons</h1>
 
-        <!-- Bilgi Kutusu -->
-        <div class="booking-info-box reveal" style="margin-top: var(--space-2); margin-bottom: var(--space-8);">
-          <div class="booking-info-row">
-            <i data-lucide="info" style="flex-shrink:0; margin-top:2px;"></i>
-            <span data-i18n-html="bookingsloginhint">To manage your bookings, please click the <strong>Register or Log in</strong> button at the <strong>bottom of the calendar below.</strong></span>
-          </div>
-          
-          <div class="booking-info-divider"></div>
-
-          <div class="booking-info-row">
-            <span style="display: flex; flex-direction: column; gap: var(--space-3);">
-              <span data-i18n="bookingsintro" style="font-weight: 600; color: var(--color-text);">After you log in, you can:</span>
-              <ul style="list-style: none; display: flex; flex-direction: column; gap: var(--space-2);">
-                <li style="display: flex; align-items: flex-start; gap: var(--space-2);">
-                  <div style="width: 5px; height: 5px; border-radius: 50%; background: var(--color-primary); flex-shrink: 0; margin-top: 8px;"></div>
-                  <span data-i18n="bookingsli1">View your upcoming and past Turkish lessons</span>
+        <div class="booking-info-box reveal" style="margin-bottom: var(--space-8);">
+          <div class="booking-info-row" style="display:flex; gap:var(--space-4); align-items: flex-start; background: var(--color-surface-offset); padding: var(--space-5); border-radius: var(--radius-lg);">
+            <i data-lucide="info" style="color:var(--color-primary); flex-shrink:0;"></i>
+            <span>
+              <strong style="display:block; margin-bottom: 8px; color: var(--color-text);" data-i18n="bookingsintro">Once logged in, you can:</strong>
+              <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px;">
+                <li style="display:flex; align-items:center; gap:8px; font-size:var(--text-sm); color: var(--color-text-muted);">
+                  <div style="width:4px; height:4px; background:var(--color-primary); border-radius:50%;"></div>
+                  <span data-i18n="bookingsli1">View all your upcoming and past lessons.</span>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: var(--space-2);">
-                  <div style="width: 5px; height: 5px; border-radius: 50%; background: var(--color-primary); flex-shrink: 0; margin-top: 8px;"></div>
-                  <span data-i18n="bookingsli2">Reschedule a lesson to a different time (if it’s still allowed by our 24‑hour rule)</span>
+                <li style="display:flex; align-items:center; gap:8px; font-size:var(--text-sm); color: var(--color-text-muted);">
+                  <div style="width:4px; height:4px; background:var(--color-primary); border-radius:50%;"></div>
+                  <span data-i18n="bookingsli2">Change or delete reservations (24h in advance).</span>
                 </li>
-                <li style="display: flex; align-items: flex-start; gap: var(--space-2);">
-                  <div style="width: 5px; height: 5px; border-radius: 50%; background: var(--color-primary); flex-shrink: 0; margin-top: 8px;"></div>
-                  <span data-i18n="bookingsli3">See how many lessons you have left in your package</span>
+                <li style="display:flex; align-items:center; gap:8px; font-size:var(--text-sm); color: var(--color-text-muted);">
+                  <div style="width:4px; height:4px; background:var(--color-primary); border-radius:50%;"></div>
+                  <span data-i18n="bookingsli3">Check your remaining lesson balance.</span>
                 </li>
               </ul>
             </span>
           </div>
+        </div>
 
-          <div class="booking-info-divider"></div>
+        <h2 class="section-title reveal" style="font-size:var(--text-xl); margin-bottom: 0;" data-i18n="bookings_guide_title">How it works</h2>
+        
+        <div class="slider-container reveal">
+          <div class="slider-track" id="sliderTrack">
+            
+            <div class="slide">
+              <div class="step-content">
+                <div class="step-info">
+                  <div class="step-badge">1</div>
+                  <h3 class="step-title" data-i18n="step1_title">Sign in</h3>
+                  <p class="step-desc" data-i18n="step1_desc">Click Register or Sign in in the top right of the calendar.</p>
+                </div>
+                <div class="step-visual">
+                  <img src="./assets/img/step1-login.png" alt="Login Step">
+                </div>
+              </div>
+            </div>
 
+            <div class="slide">
+              <div class="step-content">
+                <div class="step-info">
+                  <div class="step-badge">2</div>
+                  <h3 class="step-title" data-i18n="step2_title">Open Agenda view</h3>
+                  <p class="step-desc" data-i18n="step2_desc">Click the Week dropdown and select Agenda.</p>
+                </div>
+                <div class="step-visual">
+                  <img src="./assets/img/step2-agenda.png" alt="Agenda View Step">
+                </div>
+              </div>
+            </div>
 
-        <!-- Breely Embed -->
-        <div class="cal-embed-wrap reveal" id="turkofil-login-form-container">
-          <script type="text/javascript" src="https://turkofil.breely.com/embed.js?url=/form/17066"></script>
-          <div class="breely-inline"></div>
+            <div class="slide">
+              <div class="step-content">
+                <div class="step-info">
+                  <div class="step-badge">3</div>
+                  <h3 class="step-title" data-i18n="step3_title">Manage Reservations</h3>
+                  <p class="step-desc" data-i18n="step3_desc">View upcoming lessons and history.</p>
+                </div>
+                <div class="step-visual">
+                  <img src="./assets/img/reservations.png" alt="Upcoming and history">
+                </div>
+              </div>
+            </div>
+
+            <div class="slide">
+              <div class="step-content">
+                <div class="step-info">
+                  <div class="step-badge">4</div>
+                  <h3 class="step-title" data-i18n="rs_step1_title">Edit Reservation</h3>
+                  <p class="step-desc" data-i18n="rs_step1_desc">Click the blue pencil icon to edit.</p>
+                </div>
+                <div class="step-visual">
+                  <img src="./assets/img/cancel.png" alt="Click edit button">
+                </div>
+              </div>
+            </div>
+
+            <div class="slide">
+              <div class="step-content">
+                <div class="step-info">
+                  <div class="step-badge">5</div>
+                  <h3 class="step-title" data-i18n="rs_step2_title">Cancel / Delete</h3>
+                  <p class="step-desc" data-i18n="rs_step2_desc">Click the red trash icon to cancel.</p>
+                </div>
+                <div class="step-visual">
+                  <img src="./assets/img/cancel2.png" alt="Click trash button">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="slider-controls">
+            <span id="slideIndicator">1 / 5</span>
+            <div class="nav-btns">
+              <button class="slider-btn" id="prevBtn" onclick="moveSlide(-1)">
+                <i data-lucide="chevron-left"></i>
+              </button>
+              <button class="slider-btn" id="nextBtn" onclick="moveSlide(1)">
+                <i data-lucide="chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <h2 class="section-title reveal" style="font-size:var(--text-xl); margin-top: var(--space-4);" data-i18n="legend_title">Understanding the calendar</h2>
+        <div class="slot-legend-grid reveal">
+          <div class="slot-legend-card">
+            <div style="padding: var(--space-4); display: flex; align-items: center; gap: 8px;">
+              <span class="slot-dot slot-dot-yours"></span>
+              <span style="font-size: var(--text-sm); font-weight: 600;" data-i18n="legend_yours_label">Your Reservation</span>
+            </div>
+            <img src="./assets/img/slot-yours.png" alt="Yours" style="width:100%;">
+          </div>
+          <div class="slot-legend-card">
+            <div style="padding: var(--space-4); display: flex; align-items: center; gap: 8px;">
+              <span class="slot-dot slot-dot-yours"></span>
+              <span style="font-size: var(--text-sm); font-weight: 600;" data-i18n="legend_taken_label">Taken / Full</span>
+            </div>
+            <img src="./assets/img/slot-taken.png" alt="Taken" style="width:100%;">
+          </div>
+          <div class="slot-legend-card">
+            <div style="padding: var(--space-4); display: flex; align-items: center; gap: 8px;">
+              <span class="slot-dot slot-dot-free"></span>
+              <span style="font-size: var(--text-sm); font-weight: 600;" data-i18n="legend_free_label">Available</span>
+            </div>
+            <img src="./assets/img/slot-free.png" alt="Free" style="width:100%;">
+          </div>
+        </div>
+
+        <div class="cal-embed-wrap reveal">
+<iframe src="http://schedule.turkofil.com/schedule/turkofil/T%C3%BCrk%C3%A7e_dersleri?partitioned=1" width="100%" height="800"> </iframe>
         </div>
 
       </div>
     </section>
-
   </main>
-
-  <!-- Footer will be injected by components.js -->
 
   <script src="./assets/js/components.js"></script>
   <script src="./assets/js/app.js"></script>
-  <script>lucide.createIcons();</script>
+  
+  <script>
+    // Slider Logic
+    let currentSlide = 0;
+    const track = document.getElementById('sliderTrack');
+    const slides = document.querySelectorAll('.slide');
+    const indicator = document.getElementById('slideIndicator');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function moveSlide(dir) {
+      currentSlide = Math.max(0, Math.min(slides.length - 1, currentSlide + dir));
+      updateSlider();
+    }
+
+    function updateSlider() {
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      indicator.innerText = `${currentSlide + 1} / ${slides.length}`;
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === slides.length - 1;
+    }
+
+    // Controls Initialization
+    document.addEventListener('keydown', (e) => {
+      if (e.key === "ArrowLeft") moveSlide(-1);
+      if (e.key === "ArrowRight") moveSlide(1);
+    });
+
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => touchStartX = e.touches[0].clientX, {passive: true});
+    track.addEventListener('touchend', e => {
+      let touchEndX = e.changedTouches[0].clientX;
+      if (touchStartX - touchEndX > 50) moveSlide(1);
+      if (touchStartX - touchEndX < -50) moveSlide(-1);
+    }, {passive: true});
+
+    updateSlider();
+    lucide.createIcons();
+  </script>
 </body>
 </html>
