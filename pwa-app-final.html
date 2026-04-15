@@ -135,7 +135,7 @@
       border: 1.5px dashed oklch(from var(--color-text) l c h / 0.2);
       font-size: 0.85rem;
       font-weight: 600;
-      display: none; /* JS ile gösterilecek */
+      display: none;
     }
 
     .pwa-btn-install.visible { display: flex; }
@@ -168,40 +168,7 @@
       display: block;
     }
 
-    .bottom-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      background: var(--color-surface);
-      border-top: 1px solid oklch(from var(--color-text) l c h / 0.08);
-      padding: 0.5rem 0.5rem calc(0.5rem + env(safe-area-inset-bottom));
-      flex-shrink: 0;
-      z-index: 100;
-    }
-
-    .bnav-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3px;
-      flex: 1;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0.4rem 0.25rem;
-      border-radius: 12px;
-      color: var(--color-text-muted);
-      font-size: 0.68rem;
-      font-weight: 600;
-      transition: background 0.15s, color 0.15s;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .bnav-btn svg { width: 22px; height: 22px; stroke: currentColor; }
-    .bnav-btn:active { background: var(--color-surface-offset); }
-    .bnav-btn.active { color: var(--color-primary); }
-
-    /* ── Install Modal (iOS / Firefox talimat) ── */
+    /* ── Install Modal ── */
     .install-modal-overlay {
       display: none;
       position: fixed;
@@ -274,64 +241,61 @@
 
   <div id="pwa-content">
 
-    <main id="pwa-home">
+    <!-- DASHBOARD: Alt nav 'Manage Bookings' butonuna basılınca açılır -->
+    <main id="pwa-home" class="hidden">
       <img src="./assets/img/logo.png" alt="Turkofil" class="pwa-logo">
       <h1 class="pwa-title">Turkofil</h1>
       <p class="pwa-subtitle" data-i18n="pwa_subtitle">Turkish lessons — simple &amp; personal</p>
+      
       <div class="pwa-actions">
 
+        <!-- 1. Buton: Book a Slot -->
         <button class="pwa-btn pwa-btn-primary" onclick="showScreen('book')">
           <span class="pwa-btn-text">
             <span class="pwa-btn-label" data-i18n="pwa_book_label">Book a Slot</span>
           </span>
         </button>
 
+        <!-- 2. Buton: My Bookings -->
         <button class="pwa-btn pwa-btn-secondary" onclick="showScreen('manage')">
           <span class="pwa-btn-text">
             <span class="pwa-btn-label" data-i18n="pwa_manage_label">My Bookings</span>
           </span>
         </button>
 
-        <!-- Yükle butonu — JS ile gösterilir -->
+        <!-- 3. Buton: Install -->
         <button class="pwa-btn pwa-btn-install" id="pwaInstallBtn">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
             <polyline points="7 10 12 15 17 10"/>
             <line x1="12" y1="15" x2="12" y2="3"/>
           </svg>
-          <span data-i18n="pwa_install_btn">Uygulamayı Yükle</span>
+          <span data-i18n="pwa_install_btn">Install</span>
         </button>
 
       </div>
     </main>
 
+    <!-- SuperSaaS: Book a Slot Iframe'i -->
     <div class="pwa-frame-screen" id="screen-book">
       <iframe id="frame-book" src="" title="Book a slot"></iframe>
     </div>
 
+    <!-- SuperSaaS: My Bookings Iframe'i -->
     <div class="pwa-frame-screen" id="screen-manage">
       <iframe id="frame-manage" src="" title="My Bookings"></iframe>
     </div>
 
+    <!-- Dinamik İçerik (index.html, vs.) -->
     <div class="pwa-frame-screen" id="screen-dynamic">
       <iframe id="frame-dynamic" src="" title="Content"></iframe>
     </div>
 
   </div>
 
-  <!-- BOTTOM NAV -->
+  <!-- BOTTOM NAV (Stilleri style.css dosyasından alınır) -->
   <nav class="bottom-nav">
-    <button class="bnav-btn" id="nav-book" onclick="showScreen('book')">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="3" y="4" width="18" height="18" rx="2"/>
-        <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
-        <line x1="3" y1="10" x2="21" y2="10"/>
-        <line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/>
-      </svg>
-      <span data-i18n="pwa_book_label">Book a slot</span>
-    </button>
-
-    <button class="bnav-btn active" id="nav-home" onclick="showScreen('home')">
+    <button class="bnav-btn" id="nav-home" onclick="showScreen('dynamic', './index.html')">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
         <polyline points="9 21 9 12 15 12 15 21"/>
@@ -339,26 +303,24 @@
       <span data-i18n="nav_home">Home</span>
     </button>
 
-    <button class="bnav-btn" id="nav-manage" onclick="showScreen('manage')">
+    <button class="bnav-btn" id="nav-manage" onclick="showScreen('home')">
       <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
         <polyline points="14 2 14 8 20 8"/>
         <line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/>
       </svg>
-      <span data-i18n="pwa_manage_label">My bookings</span>
+      <!-- Alt butondaki metin güncellendi -->
+      <span data-i18n="nav_manage_bookings">Manage Bookings</span>
     </button>
   </nav>
 
-  <!-- INSTALL MODAL (iOS / Firefox talimatları) -->
   <div class="install-modal-overlay" id="installModal">
     <div class="install-modal">
       <div class="install-modal-header">
         <strong id="installModalTitle">Uygulamayı Yükle</strong>
         <button class="install-modal-close" onclick="document.getElementById('installModal').classList.remove('open')">✕</button>
       </div>
-      <div class="install-steps" id="installSteps">
-        <!-- JS tarafından doldurulur -->
-      </div>
+      <div class="install-steps" id="installSteps"></div>
     </div>
   </div>
 
@@ -366,73 +328,51 @@
   <script src="./assets/js/app.js"></script>
 
   <script>
+    // SuperSaaS URL'leri eklendi
     const BOOK_URL   = 'https://www.supersaas.com/schedule/turkofil/T%C3%BCrk%C3%A7e_dersleri?view=widget&menu=show&autoselect=first_available';
     const MANAGE_URL = 'https://www.supersaas.com/schedule/turkofil/T%C3%BCrk%C3%A7e_dersleri';
-
+    
     let loadedBook   = false;
     let loadedManage = false;
 
-    // ── Tarayıcı & platform tespiti ──
     const isIos     = /iphone|ipad|ipod/i.test(navigator.userAgent);
     const isFirefox = /firefox/i.test(navigator.userAgent);
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches
                       || window.navigator.standalone === true;
 
-    // ── Kurulum talimatları (tarayıcıya göre) ──
-    const installInstructions = {
-      ios: [
-        { text: 'Alttaki <strong>Paylaş</strong> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> butonuna bas' },
-        { text: 'Aşağı kaydır, <strong>"Ana Ekrana Ekle"</strong> seç' },
-        { text: 'Sağ üstteki <strong>"Ekle"</strong> butonuna bas — tamam! 🎉' }
-      ],
-      firefox: [
-        { text: 'Sağ üstteki <strong>⋮ Menü</strong> butonuna bas' },
-        { text: '<strong>"Ana Ekrana Ekle"</strong> seçeneğine dokun' },
-        { text: 'İkonu istediğin yere sürükle veya <strong>"Otomatik Ekle"</strong>ye dokun 🎉' }
-      ]
-    };
+    function showInstallModal(type) {
+      const t = (typeof i18n !== 'undefined' && typeof currentLang !== 'undefined')
+        ? (i18n[currentLang] || i18n['EN'])
+        : i18n['EN'];
 
-function showInstallModal(type) {
-  // Aktif dili al
-  const t = (typeof i18n !== 'undefined' && typeof currentLang !== 'undefined')
-    ? (i18n[currentLang] || i18n['EN'])
-    : i18n['EN'];
+      const prefix = type === 'ios' ? 'pwa_install_ios' : 'pwa_install_ff';
 
-  const prefix = type === 'ios' ? 'pwa_install_ios' : 'pwa_install_ff';
+      document.getElementById('installModalTitle').textContent = t[`${prefix}_title`] || 'Install';
+      document.getElementById('installSteps').innerHTML = [1, 2, 3].map(n => `
+        <div class="install-step">
+          <div class="install-step-num">${n}</div>
+          <div class="install-step-text">${t[`${prefix}_${n}`] || ''}</div>
+        </div>
+      `).join('');
 
-  document.getElementById('installModalTitle').textContent = t[`${prefix}_title`] || 'Install';
-  document.getElementById('installSteps').innerHTML = [1, 2, 3].map(n => `
-    <div class="install-step">
-      <div class="install-step-num">${n}</div>
-      <div class="install-step-text">${t[`${prefix}_${n}`] || ''}</div>
-    </div>
-  `).join('');
+      document.getElementById('installModal').classList.add('open');
+    }
 
-  document.getElementById('installModal').classList.add('open');
-}
-
-    // Modal dışına tıklayınca kapat
     document.getElementById('installModal').addEventListener('click', (e) => {
       if (e.target === document.getElementById('installModal'))
         document.getElementById('installModal').classList.remove('open');
     });
 
-    // ── Yükle butonunu göster / davranışını ayarla ──
     let deferredPrompt = null;
     const installBtn = document.getElementById('pwaInstallBtn');
 
     if (!isStandalone) {
-      // Chrome/Edge Android → beforeinstallprompt bekle
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
         installBtn.classList.add('visible');
       });
-
-      // iOS Safari → hemen göster
       if (isIos) installBtn.classList.add('visible');
-
-      // Firefox → hemen göster
       if (isFirefox) installBtn.classList.add('visible');
     }
 
@@ -453,7 +393,6 @@ function showInstallModal(type) {
       installBtn.classList.remove('visible');
     });
 
-    // ── i18n ──
     function applyPwaI18n() {
       if (typeof i18n === 'undefined' || typeof currentLang === 'undefined') return;
       const t = i18n[currentLang] || i18n['EN'];
@@ -466,8 +405,7 @@ function showInstallModal(type) {
     window.addEventListener('langchange', applyPwaI18n);
     document.addEventListener('DOMContentLoaded', () => setTimeout(applyPwaI18n, 100));
 
-    // ── Ekran yönetimi ──
-    function showScreen(name, url) {
+    function showScreen(name, url, skipHistory = false) {
       const mobileNav = document.querySelector('.mobile-nav');
       const hamburger = document.querySelector('.hamburger');
       if (mobileNav) mobileNav.classList.remove('open');
@@ -477,27 +415,34 @@ function showInstallModal(type) {
       document.querySelectorAll('.pwa-frame-screen').forEach(s => s.classList.remove('active'));
       document.querySelectorAll('.bnav-btn').forEach(b => b.classList.remove('active'));
 
+      // Dashboard ekranı
       if (name === 'home') {
         document.getElementById('pwa-home').classList.remove('hidden');
-        document.getElementById('nav-home').classList.add('active');
-        history.pushState({ screen: 'home' }, '', '#home');
+        if (document.getElementById('nav-manage')) document.getElementById('nav-manage').classList.add('active');
+        if (!skipHistory) history.pushState({ screen: 'home' }, '', '#dashboard');
 
+      // Book a slot ekranı
       } else if (name === 'book') {
         if (!loadedBook) { document.getElementById('frame-book').src = BOOK_URL; loadedBook = true; }
         document.getElementById('screen-book').classList.add('active');
-        document.getElementById('nav-book').classList.add('active');
-        history.pushState({ screen: 'book' }, '', '#book');
+        if (document.getElementById('nav-manage')) document.getElementById('nav-manage').classList.add('active');
+        if (!skipHistory) history.pushState({ screen: 'book' }, '', '#book');
 
+      // My Bookings ekranı
       } else if (name === 'manage') {
         if (!loadedManage) { document.getElementById('frame-manage').src = MANAGE_URL; loadedManage = true; }
         document.getElementById('screen-manage').classList.add('active');
-        document.getElementById('nav-manage').classList.add('active');
-        history.pushState({ screen: 'manage' }, '', '#manage');
+        if (document.getElementById('nav-manage')) document.getElementById('nav-manage').classList.add('active');
+        if (!skipHistory) history.pushState({ screen: 'manage' }, '', '#manage');
 
+      // Dinamik ekran (index.html vb.)
       } else if (name === 'dynamic' && url) {
         document.getElementById('frame-dynamic').src = url;
         document.getElementById('screen-dynamic').classList.add('active');
-        history.pushState({ screen: 'dynamic', url }, '', '#page');
+        if (url.includes('index.html') || url === './' || url === '/') {
+          if (document.getElementById('nav-home')) document.getElementById('nav-home').classList.add('active');
+        }
+        if (!skipHistory) history.pushState({ screen: 'dynamic', url }, '', '#page');
       }
     }
 
@@ -525,12 +470,27 @@ function showInstallModal(type) {
     document.addEventListener('DOMContentLoaded', () => {
       interceptNavLinks();
       setTimeout(interceptNavLinks, 400);
+
+      // İLK AÇILIŞ - Home sekmesi ve index.html ile başlat
+      if (!history.state) {
+        if (window.self === window.top) {
+          showScreen('dynamic', './index.html', true);
+        } else {
+          showScreen('home', null, true);
+        }
+      } else {
+        showScreen(history.state.screen, history.state.url, true);
+      }
     });
 
     window.addEventListener('popstate', (e) => {
       const s = e.state;
-      if (!s || s.screen === 'home') showScreen('home');
-      else showScreen(s.screen, s.url);
+      if (!s) {
+        if (window.self === window.top) showScreen('dynamic', './index.html', true);
+        else showScreen('home', null, true);
+      } else {
+        showScreen(s.screen, s.url, true);
+      }
     });
 
     if ('serviceWorker' in navigator) {
