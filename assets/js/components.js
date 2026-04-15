@@ -26,6 +26,8 @@ function buildNavLinks() {
 }
 
 function injectHeader() {
+  if (window.self !== window.top) return;  // iframe içindeyse navbar yok — DOĞRU
+
   const nav = document.createElement('nav');
   nav.className = 'navbar';
   nav.setAttribute('role', 'navigation');
@@ -94,7 +96,7 @@ function injectHeader() {
       <button class="lang-btn" data-lang="FR">FR</button>
     </div>`;
 
-  // Önce nav, sonra mobileNav ekle — sıra önemli
+  // Önce nav, sonra mobileNav ekle
   document.body.insertBefore(nav, document.body.firstChild);
   document.body.insertBefore(mobileNav, nav.nextSibling);
 
