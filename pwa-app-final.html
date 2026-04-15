@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Turkofil</title>
+  <meta name="description" content="Book and manage your Turkish lessons.">
+  <meta name="theme-color" content="#7a0a0a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Turkofil">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="./assets/img/logo.png">
+  <link rel="icon" href="./assets/img/logo.png" type="image/png">
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      overflow: hidden;
+      height: 100dvh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body > footer,
+    .theme-float-btn,
+    .bmc-btn-container,
+    #bmc-wbtn { display: none !important; }
+
+    .mobile-nav:not(.open) { display: none !important; }
+
+    .mobile-nav.open {
+      bottom: calc(70px + env(safe-area-inset-bottom)) !important;
+      top: auto !important;
+      position: fixed !important;
+      left: 0; right: 0;
+      overflow-y: auto;
+      z-index: 99;
+    }
+
+    body > nav.navbar {
+      flex-shrink: 0;
+      position: relative !important;
+      top: auto !important;
+      z-index: 100;
+    }
+
+    #pwa-content {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #pwa-home {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      background: var(--color-bg);
+      text-align: center;
+      overflow-y: auto;
+      z-index: 1;
+    }
+
+    #pwa-home.hidden { display: none; }
+
+    .pwa-logo {
+      width: 80px; height: 80px;
+      object-fit: contain;
+      margin-bottom: 1.5rem;
+    }
+
+    .pwa-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--color-text);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .pwa-subtitle {
+      font-size: 1rem;
+      color: var(--color-text-muted);
+      margin-bottom: 3rem;
+    }
+
+    .pwa-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      width: 100%;
+      max-width: 340px;
+    }
+
+    .pwa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1.1rem 1.5rem;
+      border-radius: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      box-sizing: border-box;
+      transition: all 0.2s ease;
+    }
+
+    .pwa-btn:active { transform: scale(0.96); }
+
+    .pwa-btn-primary {
+      background: var(--color-primary);
+      color: #fff;
+      box-shadow: 0 4px 15px oklch(0.3 0.15 20 / 0.2);
+    }
+
+    .pwa-btn-secondary {
+      background: var(--color-surface-offset);
+      color: var(--color-text);
+      border: 1.5px solid oklch(from var(--color-text) l c h / 0.1);
+    }
+
+    .pwa-btn-install {
+      background: none;
+      color: var(--color-text-muted);
+      border: 1.5px dashed oklch(from var(--color-text) l c h / 0.2);
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: none; /* JS ile gösterilecek */
+    }
+
+    .pwa-btn-install.visible { display: flex; }
+
+    .pwa-btn-text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      line-height: 1.2;
+    }
+
+    .pwa-btn-label { font-size: 1.05rem; }
+    .pwa-btn-sub   { font-size: 0.75rem; opacity: 0.7; font-weight: 400; margin-top: 2px; }
+
+    .pwa-frame-screen {
+      position: absolute;
+      inset: 0;
+      display: none;
+      flex-direction: column;
+      background: var(--color-bg);
+      z-index: 2;
+    }
+
+    .pwa-frame-screen.active { display: flex; }
+
+    .pwa-frame-screen iframe {
+      flex: 1;
+      width: 100%;
+      border: none;
+      display: block;
+    }
+
+    .bottom-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      background: var(--color-surface);
+      border-top: 1px solid oklch(from var(--color-text) l c h / 0.08);
+      padding: 0.5rem 0.5rem calc(0.5rem + env(safe-area-inset-bottom));
+      flex-shrink: 0;
+      z-index: 100;
+    }
+
+    .bnav-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      flex: 1;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.4rem 0.25rem;
+      border-radius: 12px;
+      color: var(--color-text-muted);
+      font-size: 0.68rem;
+      font-weight: 600;
+      transition: background 0.15s, color 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .bnav-btn svg { width: 22px; height: 22px; stroke: currentColor; }
+    .bnav-btn:active { background: var(--color-surface-offset); }
+    .bnav-btn.active { color: var(--color-primary); }
+
+    /* ── Install Modal (iOS / Firefox talimat) ── */
+    .install-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9999;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .install-modal-overlay.open { display: flex; }
+
+    .install-modal {
+      background: var(--color-surface);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 -4px 40px rgba(0,0,0,0.2);
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(40px); opacity: 0; }
+      to   { transform: translateY(0);    opacity: 1; }
+    }
+
+    .install-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .install-modal-header strong { font-size: 1.05rem; color: var(--color-text); }
+
+    .install-modal-close {
+      background: var(--color-surface-offset);
+      border: none;
+      border-radius: 50%;
+      width: 28px; height: 28px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-text-muted);
+    }
+
+    .install-steps { display: flex; flex-direction: column; gap: 1rem; }
+
+    .install-step { display: flex; align-items: flex-start; gap: 0.75rem; }
+
+    .install-step-num {
+      background: var(--color-primary);
+      color: #fff;
+      border-radius: 50%;
+      width: 26px; height: 26px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .install-step-text { font-size: 0.9rem; color: var(--color-text); line-height: 1.5; }
+    .install-step-text strong { color: var(--color-primary); }
+  </style>
+</head>
+<body>
+
+  <div id="pwa-content">
+
+    <main id="pwa-home">
+      <img src="./assets/img/logo.png" alt="Turkofil" class="pwa-logo">
+      <h1 class="pwa-title">Turkofil</h1>
+      <p class="pwa-subtitle" data-i18n="pwa_subtitle">Turkish lessons — simple &amp; personal</p>
+      <div class="pwa-actions">
+
+        <button class="pwa-btn pwa-btn-primary" onclick="showScreen('book')">
+          <span class="pwa-btn-text">
+            <span class="pwa-btn-label" data-i18n="pwa_book_label">Book a Slot</span>
+          </span>
+        </button>
+
+        <button class="pwa-btn pwa-btn-secondary" onclick="showScreen('manage')">
+          <span class="pwa-btn-text">
+            <span class="pwa-btn-label" data-i18n="pwa_manage_label">My Bookings</span>
+          </span>
+        </button>
+
+        <!-- Yükle butonu — JS ile gösterilir -->
+        <button class="pwa-btn pwa-btn-install" id="pwaInstallBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span data-i18n="pwa_install_btn">Uygulamayı Yükle</span>
+        </button>
+
+      </div>
+    </main>
+
+    <div class="pwa-frame-screen" id="screen-book">
+      <iframe id="frame-book" src="" title="Book a slot"></iframe>
+    </div>
+
+    <div class="pwa-frame-screen" id="screen-manage">
+      <iframe id="frame-manage" src="" title="My Bookings"></iframe>
+    </div>
+
+    <div class="pwa-frame-screen" id="screen-dynamic">
+      <iframe id="frame-dynamic" src="" title="Content"></iframe>
+    </div>
+
+  </div>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav">
+    <button class="bnav-btn" id="nav-book" onclick="showScreen('book')">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/>
+        <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
+        <line x1="3" y1="10" x2="21" y2="10"/>
+        <line x1="12" y1="14" x2="12" y2="18"/><line x1="10" y1="16" x2="14" y2="16"/>
+      </svg>
+      <span data-i18n="pwa_book_label">Book a slot</span>
+    </button>
+
+    <button class="bnav-btn active" id="nav-home" onclick="showScreen('home')">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5z"/>
+        <polyline points="9 21 9 12 15 12 15 21"/>
+      </svg>
+      <span data-i18n="nav_home">Home</span>
+    </button>
+
+    <button class="bnav-btn" id="nav-manage" onclick="showScreen('manage')">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+        <polyline points="14 2 14 8 20 8"/>
+        <line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/>
+      </svg>
+      <span data-i18n="pwa_manage_label">My bookings</span>
+    </button>
+  </nav>
+
+  <!-- INSTALL MODAL (iOS / Firefox talimatları) -->
+  <div class="install-modal-overlay" id="installModal">
+    <div class="install-modal">
+      <div class="install-modal-header">
+        <strong id="installModalTitle">Uygulamayı Yükle</strong>
+        <button class="install-modal-close" onclick="document.getElementById('installModal').classList.remove('open')">✕</button>
+      </div>
+      <div class="install-steps" id="installSteps">
+        <!-- JS tarafından doldurulur -->
+      </div>
+    </div>
+  </div>
+
+  <script src="./assets/js/components.js"></script>
+  <script src="./assets/js/app.js"></script>
+
+  <script>
+    const BOOK_URL   = 'https://www.supersaas.com/schedule/turkofil/T%C3%BCrk%C3%A7e_dersleri?view=widget&menu=show&autoselect=first_available';
+    const MANAGE_URL = 'https://www.supersaas.com/schedule/turkofil/T%C3%BCrk%C3%A7e_dersleri';
+
+    let loadedBook   = false;
+    let loadedManage = false;
+
+    // ── Tarayıcı & platform tespiti ──
+    const isIos     = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isFirefox = /firefox/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+                      || window.navigator.standalone === true;
+
+    // ── Kurulum talimatları (tarayıcıya göre) ──
+    const installInstructions = {
+      ios: [
+        { text: 'Alttaki <strong>Paylaş</strong> <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg> butonuna bas' },
+        { text: 'Aşağı kaydır, <strong>"Ana Ekrana Ekle"</strong> seç' },
+        { text: 'Sağ üstteki <strong>"Ekle"</strong> butonuna bas — tamam! 🎉' }
+      ],
+      firefox: [
+        { text: 'Sağ üstteki <strong>⋮ Menü</strong> butonuna bas' },
+        { text: '<strong>"Ana Ekrana Ekle"</strong> seçeneğine dokun' },
+        { text: 'İkonu istediğin yere sürükle veya <strong>"Otomatik Ekle"</strong>ye dokun 🎉' }
+      ]
+    };
+
+function showInstallModal(type) {
+  // Aktif dili al
+  const t = (typeof i18n !== 'undefined' && typeof currentLang !== 'undefined')
+    ? (i18n[currentLang] || i18n['EN'])
+    : i18n['EN'];
+
+  const prefix = type === 'ios' ? 'pwa_install_ios' : 'pwa_install_ff';
+
+  document.getElementById('installModalTitle').textContent = t[`${prefix}_title`] || 'Install';
+  document.getElementById('installSteps').innerHTML = [1, 2, 3].map(n => `
+    <div class="install-step">
+      <div class="install-step-num">${n}</div>
+      <div class="install-step-text">${t[`${prefix}_${n}`] || ''}</div>
+    </div>
+  `).join('');
+
+  document.getElementById('installModal').classList.add('open');
+}
+
+    // Modal dışına tıklayınca kapat
+    document.getElementById('installModal').addEventListener('click', (e) => {
+      if (e.target === document.getElementById('installModal'))
+        document.getElementById('installModal').classList.remove('open');
+    });
+
+    // ── Yükle butonunu göster / davranışını ayarla ──
+    let deferredPrompt = null;
+    const installBtn = document.getElementById('pwaInstallBtn');
+
+    if (!isStandalone) {
+      // Chrome/Edge Android → beforeinstallprompt bekle
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installBtn.classList.add('visible');
+      });
+
+      // iOS Safari → hemen göster
+      if (isIos) installBtn.classList.add('visible');
+
+      // Firefox → hemen göster
+      if (isFirefox) installBtn.classList.add('visible');
+    }
+
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        if (outcome === 'accepted') installBtn.classList.remove('visible');
+      } else if (isIos) {
+        showInstallModal('ios');
+      } else if (isFirefox) {
+        showInstallModal('firefox');
+      }
+    });
+
+    window.addEventListener('appinstalled', () => {
+      installBtn.classList.remove('visible');
+    });
+
+    // ── i18n ──
+    function applyPwaI18n() {
+      if (typeof i18n === 'undefined' || typeof currentLang === 'undefined') return;
+      const t = i18n[currentLang] || i18n['EN'];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+    }
+
+    window.addEventListener('langchange', applyPwaI18n);
+    document.addEventListener('DOMContentLoaded', () => setTimeout(applyPwaI18n, 100));
+
+    // ── Ekran yönetimi ──
+    function showScreen(name, url) {
+      const mobileNav = document.querySelector('.mobile-nav');
+      const hamburger = document.querySelector('.hamburger');
+      if (mobileNav) mobileNav.classList.remove('open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+
+      document.getElementById('pwa-home').classList.add('hidden');
+      document.querySelectorAll('.pwa-frame-screen').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.bnav-btn').forEach(b => b.classList.remove('active'));
+
+      if (name === 'home') {
+        document.getElementById('pwa-home').classList.remove('hidden');
+        document.getElementById('nav-home').classList.add('active');
+        history.pushState({ screen: 'home' }, '', '#home');
+
+      } else if (name === 'book') {
+        if (!loadedBook) { document.getElementById('frame-book').src = BOOK_URL; loadedBook = true; }
+        document.getElementById('screen-book').classList.add('active');
+        document.getElementById('nav-book').classList.add('active');
+        history.pushState({ screen: 'book' }, '', '#book');
+
+      } else if (name === 'manage') {
+        if (!loadedManage) { document.getElementById('frame-manage').src = MANAGE_URL; loadedManage = true; }
+        document.getElementById('screen-manage').classList.add('active');
+        document.getElementById('nav-manage').classList.add('active');
+        history.pushState({ screen: 'manage' }, '', '#manage');
+
+      } else if (name === 'dynamic' && url) {
+        document.getElementById('frame-dynamic').src = url;
+        document.getElementById('screen-dynamic').classList.add('active');
+        history.pushState({ screen: 'dynamic', url }, '', '#page');
+      }
+    }
+
+    function routeHref(href) {
+      if (!href || href.startsWith('http') || href.startsWith('mailto')) {
+        window.open(href, '_blank', 'noopener');
+        return;
+      }
+      if (href.includes('bookings'))                                    showScreen('manage');
+      else if (href.includes('index') || href === './' || href === '/') showScreen('dynamic', './index.html');
+      else                                                              showScreen('dynamic', href);
+    }
+
+    function interceptNavLinks() {
+      document.querySelectorAll('nav.navbar a[href], .mobile-nav a[href]').forEach(link => {
+        if (link.dataset.pwaIntercepted) return;
+        link.dataset.pwaIntercepted = 'true';
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          routeHref(link.getAttribute('href'));
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      interceptNavLinks();
+      setTimeout(interceptNavLinks, 400);
+    });
+
+    window.addEventListener('popstate', (e) => {
+      const s = e.state;
+      if (!s || s.screen === 'home') showScreen('home');
+      else showScreen(s.screen, s.url);
+    });
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+  </script>
+
+</body>
+</html>

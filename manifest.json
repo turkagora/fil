@@ -1,0 +1,35 @@
+{
+  "name": "Turkofil",
+  "short_name": "Turkofil",
+  "description": "Book and manage your Turkish lessons.",
+  "start_url": "./pwa-app-final.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#7a0a0a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "./assets/img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./assets/img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["education"],
+  "lang": "tr"
+}

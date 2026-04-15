@@ -5,18 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Turkofil — Turkish Language Tutor</title>
   <meta name="description" content="Learn Turkish with Turkofil — live 1-on-1 online lessons for all levels.">
-  <link rel="icon" href="./assets/img/logo.png" type="image/jpeg">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./assets/img/logo.png" type="image/png">
+  <link rel="apple-touch-icon" href="./assets/img/logo.png">
   <link rel="stylesheet" href="./assets/css/style.css">
+
+<script>
+  (function () {
+    if (window.self !== window.top) return; // ← Bu satırı ekle
+    if (window.location.pathname.includes('pwa-app-final')) return;
+    if (window.matchMedia('(display-mode: standalone)').matches) return;
+    const isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    if (isMobile) window.location.replace('./pwa-app-final.html');
+  })();
+</script>
+  
+  
 </head>
 <body>
 
 <main class="page-wrapper">
 
+
   <!-- HERO -->
   <section class="hero" aria-labelledby="hero-heading">
     <div class="hero-inner">
-
-      <!-- Text -->
       <div class="hero-text">
         <span class="hero-eyebrow" data-i18n="hero_eyebrow">Turkish Language Tutor</span>
         <h1 class="hero-title" id="hero-heading">
@@ -30,33 +43,186 @@
         <div class="hero-actions">
           <a href="./lessons.html" class="btn-primary" data-i18n="hero_cta">Lesson Packages</a>
           <a href="https://www.instagram.com/turkishwithturkofil/" target="_blank" rel="noopener noreferrer" class="btn-outline social-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
             <span data-i18n="hero_follow">Follow on Instagram</span>
           </a>
         </div>
       </div>
-
-      <!-- Video -->
       <div class="hero-media reveal">
         <div class="hero-video-wrap">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/XVGzSNtkT0k?si=rSVp8NJ8qEdzb4YR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <iframe width="560" height="315"
+            src="https://www.youtube.com/embed/XVGzSNtkT0k?si=rSVp8NJ8qEdzb4YR"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+          </iframe>
         </div>
       </div>
-
     </div>
   </section>
-  
-  <div id="reviews-container"></div>
 
+  <div id="reviews-container"></div>
 
 </main>
 
-<script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js" data-id="turkofillanguage" data-description="Support me on Buy me a coffee!" data-message="You can support me by buying me a coffee / Vous pouvez me soutenir en m'offrant un café 😊" data-color="#FF813F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
-
-
+<script data-name="BMC-Widget" data-cfasync="false"
+  src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+  data-id="turkofillanguage"
+  data-description="Support me on Buy me a coffee!"
+  data-message="You can support me by buying me a coffee / Vous pouvez me soutenir en m'offrant un café 😊"
+  data-color="#FF813F" data-position="Right"
+  data-x_margin="18" data-y_margin="18">
+</script>
 
 <script src="./assets/js/components.js"></script>
 <script src="./assets/js/reviews.js"></script>
 <script src="./assets/js/app.js"></script>
+
+<style>
+  .pwa-install-section {
+    padding: 0 var(--space-6);
+    margin: 2rem auto;
+    max-width: 720px;
+  }
+  .pwa-install-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--color-surface);
+    border: 1.5px solid oklch(from var(--color-primary) l c h / 0.2);
+    border-radius: 1.25rem;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 4px 20px oklch(0.3 0.15 20 / 0.08);
+  }
+  .pwa-install-icon img { border-radius: 12px; }
+  .pwa-install-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .pwa-install-text strong { font-size: 0.95rem; color: var(--color-text); }
+  .pwa-install-text span   { font-size: 0.8rem; color: var(--color-text-muted); }
+  .pwa-install-btn {
+    background: var(--color-primary);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.55rem 1.1rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.15s;
+  }
+  .pwa-install-btn:hover { opacity: 0.88; }
+  .pwa-install-section.hidden { display: none; }
+
+  .ios-modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 9999;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .ios-modal-overlay.open { display: flex; }
+  .ios-modal {
+    background: var(--color-surface);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 -4px 40px rgba(0,0,0,0.2);
+    animation: slideUp 0.3s ease;
+  }
+  @keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+  }
+  .ios-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+  }
+  .ios-modal-header strong { font-size: 1.05rem; color: var(--color-text); }
+  .ios-modal-close {
+    background: var(--color-surface-offset);
+    border: none;
+    border-radius: 50%;
+    width: 28px; height: 28px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--color-text-muted);
+  }
+  .ios-modal-steps { display: flex; flex-direction: column; gap: 1rem; }
+  .ios-step { display: flex; align-items: flex-start; gap: 0.75rem; }
+  .ios-step-num {
+    background: var(--color-primary);
+    color: #fff;
+    border-radius: 50%;
+    width: 26px; height: 26px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .ios-step-text { font-size: 0.9rem; color: var(--color-text); line-height: 1.5; }
+  .ios-step-text strong { color: var(--color-primary); }
+  .ios-arrow-icon { display: inline-block; vertical-align: middle; }
+</style>
+
+<script>
+  (function () {
+    const section = document.getElementById('pwa-install-section');
+    const btn     = document.getElementById('pwaInstallBtn');
+    const modal   = document.getElementById('iosModal');
+
+    let deferredPrompt = null;
+
+    const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+                      || window.navigator.standalone === true;
+
+    if (isStandalone) return;
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      section.classList.remove('hidden');
+    });
+
+    if (isIos) section.classList.remove('hidden');
+
+    btn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+        if (outcome === 'accepted') section.classList.add('hidden');
+      } else if (isIos) {
+        modal.classList.add('open');
+      }
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('open');
+    });
+
+    window.addEventListener('appinstalled', () => {
+      section.classList.add('hidden');
+    });
+  })();
+</script>
+
 </body>
 </html>
