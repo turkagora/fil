@@ -834,3 +834,84 @@ footer {
   .question-card { padding: var(--space-5) var(--space-5); }
   .quiz-inner { gap: var(--space-6); }
 }
+
+/* =========================================
+   PWA BOTTOM NAVIGATION - PILL STYLE (DÜZELTİLMİŞ)
+========================================= */
+
+.bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: var(--color-surface);
+  border-top: 1px solid oklch(from var(--color-text) l c h / 0.08);
+  padding: 0.5rem 1rem calc(0.5rem + env(safe-area-inset-bottom));
+  gap: 0.5rem;
+  flex-shrink: 0;
+  z-index: 100;
+}
+
+.bnav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  max-width: 160px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.6rem 0.5rem;
+  border-radius: 16px;
+  color: var(--color-text-muted); /* Varsayılan gri metin rengi */
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  -webkit-tap-highlight-color: transparent;
+  position: relative; /* İçeriklerin doğru sıralanması için */
+  overflow: hidden;
+}
+
+/* İkon ve Metin için z-index (Arka planın altında kalmamaları için) */
+.bnav-btn svg, 
+.bnav-btn span {
+  position: relative;
+  z-index: 2;
+}
+
+.bnav-btn svg { 
+  width: 24px; 
+  height: 24px; 
+  stroke: currentColor; 
+  fill: none; /* İkonun içinin boyanmasını engeller */
+  transition: transform 0.2s ease;
+}
+
+.bnav-btn:active:not(.active) {
+  background: var(--color-surface-offset);
+  transform: scale(0.95);
+}
+
+/* --- AKTİF BUTON --- */
+.bnav-btn.active {
+  background: var(--color-primary); 
+  color: #ffffff !important; /* Metin rengini kesin olarak beyaz yapar */
+  box-shadow: 0 4px 12px oklch(from var(--color-primary) l c h / 0.3);
+}
+
+/* Aktif butonun içindeki ikonun rengini kesin olarak beyaz yapar */
+.bnav-btn.active svg {
+  stroke: #ffffff !important;
+  stroke-width: 2.5px;
+  transform: translateY(-1px);
+}
+
+/* Aktif butonun içindeki span (yazı) rengini beyaz yapar */
+.bnav-btn.active span {
+  color: #ffffff !important;
+}
+
+/* =========================================
+   PWA BOTTOM NAVIGATION - PILL STYLE
+========================================= */
