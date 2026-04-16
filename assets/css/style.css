@@ -836,7 +836,7 @@ footer {
 }
 
 /* =========================================
-   PWA BOTTOM NAVIGATION - PILL STYLE (DÜZELTİLMİŞ)
+   PWA BOTTOM NAVIGATION - COMPACT PILL
 ========================================= */
 
 .bottom-nav {
@@ -845,8 +845,9 @@ footer {
   justify-content: space-around;
   background: var(--color-surface);
   border-top: 1px solid oklch(from var(--color-text) l c h / 0.08);
-  padding: 0.5rem 1rem calc(0.5rem + env(safe-area-inset-bottom));
-  gap: 0.5rem;
+  /* Padding değerleri düşürüldü */
+  padding: 0.4rem 0.8rem calc(0.4rem + env(safe-area-inset-bottom));
+  gap: 0.4rem;
   flex-shrink: 0;
   z-index: 100;
 }
@@ -856,24 +857,23 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 2px; /* İkon ve metin arası daraltıldı */
   flex: 1;
-  max-width: 160px;
+  max-width: 120px; /* Genişlik kısıtlandı */
   background: transparent;
   border: none;
   cursor: pointer;
-  padding: 0.6rem 0.5rem;
-  border-radius: 16px;
-  color: var(--color-text-muted); /* Varsayılan gri metin rengi */
-  font-size: 0.75rem;
+  padding: 0.4rem 0.2rem; /* Dikey padding azaltıldı */
+  border-radius: 12px; /* Daha küçük radius */
+  color: var(--color-text-muted);
+  font-size: 0.7rem; /* Font küçültüldü */
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-in-out;
   -webkit-tap-highlight-color: transparent;
-  position: relative; /* İçeriklerin doğru sıralanması için */
+  position: relative;
   overflow: hidden;
 }
 
-/* İkon ve Metin için z-index (Arka planın altında kalmamaları için) */
 .bnav-btn svg, 
 .bnav-btn span {
   position: relative;
@@ -881,37 +881,33 @@ footer {
 }
 
 .bnav-btn svg { 
-  width: 24px; 
-  height: 24px; 
+  width: 20px; /* İkon boyutu 24px'den 20px'e düşürüldü */
+  height: 20px; 
   stroke: currentColor; 
-  fill: none; /* İkonun içinin boyanmasını engeller */
+  fill: none;
   transition: transform 0.2s ease;
 }
 
-.bnav-btn:active:not(.active) {
-  background: var(--color-surface-offset);
-  transform: scale(0.95);
-}
-
-/* --- AKTİF BUTON --- */
+/* --- AKTİF DURUM (Daha İnce Görünüm) --- */
 .bnav-btn.active {
   background: var(--color-primary); 
-  color: #ffffff !important; /* Metin rengini kesin olarak beyaz yapar */
-  box-shadow: 0 4px 12px oklch(from var(--color-primary) l c h / 0.3);
+  color: #ffffff !important;
+  /* Shadow biraz daha hafifletildi */
+  box-shadow: 0 2px 8px oklch(from var(--color-primary) l c h / 0.2);
 }
 
-/* Aktif butonun içindeki ikonun rengini kesin olarak beyaz yapar */
 .bnav-btn.active svg {
   stroke: #ffffff !important;
-  stroke-width: 2.5px;
-  transform: translateY(-1px);
+  stroke-width: 2px; /* Stroke kalınlığı dengelendi */
+  transform: scale(1.05); /* Yukarı kaydırma yerine hafif büyüme */
 }
 
-/* Aktif butonun içindeki span (yazı) rengini beyaz yapar */
 .bnav-btn.active span {
   color: #ffffff !important;
 }
 
-/* =========================================
-   PWA BOTTOM NAVIGATION - PILL STYLE
-========================================= */
+/* Dokunma tepkisi */
+.bnav-btn:active:not(.active) {
+  background: var(--color-surface-offset);
+  transform: scale(0.96);
+}
