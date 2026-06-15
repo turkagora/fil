@@ -36,7 +36,7 @@ function injectHeader() {
   <div class="navbar-inner">
     <a href="./index.html" class="navbar-logo" aria-label="Turkofil home">
       <img src="./assets/img/logo.png" alt="Turkofil logo" width="38" height="38" loading="lazy">
-      <span class="navbar-logo-name">Turko<span>fil</span></span>
+      <span class="navbar-logo-name">Türko<span>fil</span></span>
     </a>
     <div class="navbar-links">
       ${buildNavLinks()}
@@ -145,7 +145,7 @@ function injectFooter() {
   <div class="footer-inner">
     <a href="./index.html" class="footer-brand" aria-label="Turkofil home">
       <img src="./assets/img/logo.png" alt="Turkofil logo" width="32" height="32" loading="lazy">
-      <span class="footer-brand-name">Turko<span>fil</span></span>
+      <span class="footer-brand-name">Türko<span>fil</span></span>
     </a>
     <nav class="footer-links" aria-label="Footer navigation">
       ${buildNavLinks()}
