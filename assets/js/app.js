@@ -137,6 +137,7 @@ modal_sale_body: "<h4>1. TARAFLAR</h4><p>İşbu sözleşme, Budapeşte, Macarist
   
   
   
+  
   },
   
   
