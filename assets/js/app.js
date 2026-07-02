@@ -93,8 +93,50 @@ pwa_install_ios_2: '<strong>Paylaş</strong> <svg width="14" height="14" viewBox
 pwa_install_ios_3: 'Aşağı kaydır, <strong>"Ana Ekrana Ekle"</strong> seç — tamam! 🎉',
 pwa_install_ff_1: 'Sağ üstteki <strong>⋮ üç nokta</strong> butonuna bas',
 pwa_install_ff_2: '<strong>"Ana Ekrana Ekle"</strong> seçeneğine dokun',
-pwa_install_ff_3: 'İkonu istediğin yere sürükle veya <strong>"Otomatik Ekle"</strong>ye dokun 🎉'
+pwa_install_ff_3: 'İkonu istediğin yere sürükle veya <strong>"Otomatik Ekle"</strong>ye dokun 🎉',
 
+// --- Privacy Notice TR ---
+footer_privacy: "Gizlilik Bildirimi",
+privacy_title: "Gizlilik Bildirimi",
+privacy_updated: "Son güncelleme: Temmuz 2026",
+privacy_intro: "Bu Gizlilik Bildirimi, <strong>turkofil.com</strong> adresi ziyaret edildiğinde ve hizmet satın alındığında kişisel verilerin nasıl toplandığını, kullanıldığını ve korunduğunu açıklamaktadır. Gizliliğin, (AB) 2016/679 sayılı Genel Veri Koruma Tüzüğü (\"GDPR\") uyarınca korunması taahhüt edilmektedir.",
+privacy_who_title: "1. Veri Sorumlusu (Biz Kimiz)",
+privacy_who_body: "GDPR kapsamında Veri Sorumlusu, Budapeşte, Macaristan merkezli <strong>Tayfun Tümtürk</strong>'tür. Gizlilikle ilgili her türlü soru için lütfen şu adresten iletişime geçiniz: <a href=\"mailto:turkofil.language@gmail.com\">turkofil.language@gmail.com</a>.",
+privacy_what_title: "2. Hangi Veriler Hangi Amaçla Toplanmaktadır?",
+privacy_what_intro: "Web sitesiyle kurulan etkileşime bağlı olarak farklı türde kişisel veriler toplanmakta ve işlenmektedir:",
+privacy_ga_title: "A. Web sitesi ziyaret edildiğinde (Analiz)",
+privacy_ga_collected: "<strong>Toplanan veriler:</strong> IP adresi (anonimleştirilmiş), tarayıcı türü, cihaz türü, ziyaret edilen sayfalar ve sitede geçirilen süre.",
+privacy_ga_purpose: "<strong>Amaç:</strong> Web sitesi trafiğini analiz etmek, kullanıcı deneyimini iyileştirmek ve sunulan hizmetleri optimize etmek.",
+privacy_ga_basis: "<strong>Hukuki Sebep:</strong> Çerez rıza başlığı (cookie banner) aracılığıyla alınan açık rıza (GDPR Madde 6(1)(a)). Web sitesindeki \"Tercihleri Yönet\" bağlantısına tıklanarak rıza dilediğiniz zaman geri çekilebilir.",
+privacy_ga_processor: "<strong>Veri İşleyen:</strong> Google Analytics kullanılmaktadır. Google, bu verileri standart sözleşme maddeleri (SCC) uyarınca EEA (Avrupa Ekonomik Alanı) dışına aktarabilir.",
+privacy_booking_title: "B. Ders rezervasyonu yapıldığında veya satın alındığında",
+privacy_booking_collected: "<strong>Toplanan veriler:</strong> Ad, soyad, e-posta adresi, fiziksel/fatura adresi, rezervasyon geçmişi ve saat dilimi.",
+privacy_booking_purpose: "<strong>Amaç:</strong> Derslerin planlanması, hesabın yönetilmesi (SuperSaaS aracılığıyla), rezervasyonlara ilişkin iletişim süreçlerinin yürütülmesi ve hizmet yükümlülüklerinin yerine getirilmesi.",
+privacy_booking_basis: "<strong>Hukuki Sebep:</strong> Bir sözleşmenin ifası (GDPR Madde 6(1)(b)). Bu veriler sağlanmadan, satın alınan özel ders hizmetlerinin sunulması mümkün değildir.",
+privacy_payment_title: "C. Ödeme İşlemleri",
+privacy_payment_collected: "<strong>Toplanan veriler:</strong> Ödeme kartı bilgileri, fatura adresi ve işlem geçmişi.",
+privacy_payment_note: "<strong>Önemli Not:</strong> Kredi kartı numarasının tamamı veya CVV kodu tarafımızca <em>görülmemekte</em>, toplanmamakta ve saklanmamaktadır. Tüm ödemeler, güvenli bir şekilde doğrudan ödeme ağ geçidi olan <strong>Stripe</strong> tarafından işlenmektedir.",
+privacy_payment_basis: "<strong>Hukuki Sebep:</strong> Bir sözleşmenin ifası (GDPR Madde 6(1)(b)) ve yasal yükümlülüklerin yerine getirilmesi (GDPR Madde 6(1)(c)).",
+privacy_retention_title: "3. Veriler Ne Kadar Süreyle Saklanmaktadır? (Veri Saklama Süresi)",
+privacy_retention_intro: "Kişisel veriler, yalnızca bu Gizlilik Bildirimi'nde belirtilen amaçlar için gerekli olduğu sürece saklanmaktadır:",
+privacy_retention_ga: "<strong>Analiz verileri:</strong> Google Analytics tarafından standart olarak 14 ay boyunca saklanmakta ve bu sürenin sonunda otomatik olarak silinmektedir.",
+privacy_retention_customer: "<strong>Müşteri ve Rezervasyon verileri:</strong> Aktif ilişki süresince ve son dersin ardından gerekli olan idari dönem boyunca saklanmaktadır.",
+privacy_retention_billing: "<strong>Fatura ve Muhasebe kayıtları:</strong> Macaristan Muhasebe Kanunu (Muhasebe Hakkında 2000 Yılı C Sayılı Kanun, Madde 169) uyarınca muhasebe belgelerini, faturaları ve ilgili ödeme verilerini en az <strong>8 yıl</strong> süreyle saklama yasal yükümlülüğü bulunmaktadır.",
+privacy_sharing_title: "4. Veri Paylaşımı ve Üçüncü Taraf Veri İşleyenler",
+privacy_sharing_body: "Kişisel veriler, pazarlama amacıyla ücüncü taraflara satılmamakta, kiralanmamakta ve ticarete konu edilmemektedir. Söz konusu veriler, yalnızca faaliyetlerin yürütülebilmesi için gerekli olan ve güvenilir üçüncü taraf hizmet sağlayıcılarıyla (Veri İşleyenler) paylaşılmaktadır; örneğin: <strong>Stripe</strong> (güvenli ödeme işlemleri için), <strong>SuperSaaS</strong> (takvim rezervasyonlarının yönetimi için) ve <strong>Google Analytics</strong> (yalnızca onay verilmesi durumunda). Tüm veri işleyenlerin GDPR uyumlu olması güvence altına alınmaktadır.",
+privacy_rights_title: "5. Veri Koruma Haklarınız",
+privacy_rights_body: "GDPR uyarınca; kişisel verilere erişme, verilerin bir kopyasını talep etme, düzeltilmesini veya silinmesini isteme hakkı mevcuttur. Ayrıca verilerin işlenmesine itiraz etme, işlenmesini kısıtlama ve verilmiş olan rızayı (örneğin çerezler için) dilediğiniz zaman geri çekme hakkı bulunmaktadır. Bu hakların kullanılması için <a href=\"mailto:turkofil.language@gmail.com\">turkofil.language@gmail.com</a> adresi üzerinden iletişime geçilmesi mümkündür. İletilen talepler en geç bir ay içinde yanıtlanacaktır.",
+privacy_complaint_title: "6. Şikayette Bulunma Hakkı",
+privacy_complaint_body: "Kişisel verilerin işlenmesinde GDPR ihlali olduğu kanaatine varılması halinde, yerel denetim makamına veya Macaristan Ulusal Veri Koruma ve Bilgi Edinme Özgürlüğü Makamı'na (NAIH) şikayette bulunma hakkı saklıdır:",
+privacy_naih_address: "<strong>Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)</strong><br>Adres: 1055 Budapest, Falk Miksa utca 9-11., Macaristan<br>Posta adresi: 1363 Budapest, Pf.: 9.<br>E-posta: <a href=\"mailto:ugyfelszolgalat@naih.hu\">ugyfelszolgalat@naih.hu</a><br>Web sitesi: <a href=\"http://www.naih.hu\" target=\"_blank\" rel=\"noopener noreferrer\">www.naih.hu</a>",  
+  
+modal_sale_title: "Mesafeli Satış Sözleşmesi ve Ön Bilgilendirme",
+modal_decline_btn: "Vazgeç",
+modal_accept_btn: "Okudum, Onaylıyorum",
+modal_sale_body: "<h4>1. TARAFLAR</h4><p>İşbu sözleşme, Budapeşte, Macaristan merkezli Hizmet Sağlayıcı turkofil.com ile turkofil.com üzerinden hizmet satın alan kullanıcı (Alıcı) arasında akdedilmiştir.</p><h4>2. SÖZLEŞMENİN KONUSU</h4><p>Sözleşmenin konusu, Alıcı'nın elektronik ortamda siparişini verdiği canlı birebir dil dersi paketlerinin satışı ve teslimi ile ilgili yasal hak ve yükümlülüklerin belirlenmesidir.</p><h4>3. REZERVASYON VE İPTAL ŞARTLARI</h4><p>Satın alınan ders paketleri SuperSaaS sistemi üzerinden planlanır. Rezerve edilen dersler en geç 24 saat öncesine kadar iptal edilmediği veya ertelenmediği takdirde yapılmış sayılır.</p><h4>4. SAKLAMA VE SÜRE</h4><p>Aksi belirtilmedikçe, satın alınan tüm ders paketlerinin satın alma tarihinden itibaren 6 ay içinde kullanılması gerekmektedir. Süresi dolan dersler geçerliliğini yitirir.</p><h4>5. CAYMA HAKKI İSTİSNASI</h4><p>AB Tüketici Hakları mevzuatı uyarınca, Alıcı'nın açık onayı ile 14 günlük cayma süresi dolmadan önce canlı derslerin verilmesine başlanmışsa, ifa edilen dersler için iade yapılamaz.</p>"  
+  
+  
+  
   },
   
   
@@ -191,9 +233,53 @@ pwa_install_ios_2: 'Tap <strong>Share</strong> <svg width="14" height="14" viewB
 pwa_install_ios_3: 'Scroll down and tap <strong>"Add to Home Screen"</strong> — done! 🎉',
 pwa_install_ff_1: 'Tap the <strong>⋮ three dots</strong> menu at the top right',
 pwa_install_ff_2: 'Tap <strong>"Add to Home Screen"</strong>',
-pwa_install_ff_3: 'Drag the icon or tap <strong>"Add automatically"</strong> 🎉'
-	
+pwa_install_ff_3: 'Drag the icon or tap <strong>"Add automatically"</strong> 🎉',
+
+// --- Privacy Notice EN ---
+footer_privacy: "Privacy Notice",
+privacy_title: "Privacy Notice",
+privacy_updated: "Last updated: July 2026",
+privacy_intro: "This Privacy Notice explains how we collect, use, and protect your personal data when you visit <strong>turkofil.com</strong> and purchase our services. We are committed to ensuring your privacy is protected in compliance with the General Data Protection Regulation (EU) 2016/679 (\"GDPR\").",
+privacy_who_title: "1. Data Controller (Who We Are)",
+privacy_who_body: "For the purposes of the GDPR, the Data Controller is <strong>Tayfun Tümtürk</strong>, based in Budapest, Hungary. For any privacy-related questions, contact: <a href=\"mailto:turkofil.language@gmail.com\">turkofil.language@gmail.com</a>.",
+privacy_what_title: "2. What Data We Collect and Why",
+privacy_what_intro: "We collect and process different types of personal data depending on how you interact with our website:",
+privacy_ga_title: "A. When you visit our website (Analytics)",
+privacy_ga_collected: "<strong>Data collected:</strong> IP address (anonymized), browser type, device type, pages visited, and time spent on the site.",
+privacy_ga_purpose: "<strong>Purpose:</strong> To analyze website traffic, improve user experience, and optimize our services.",
+privacy_ga_basis: "<strong>Legal Basis:</strong> Your explicit consent (Art. 6(1)(a) GDPR), obtained via our cookie consent banner. You can withdraw your consent at any time by clicking the \"Manage Preferences\" link on our website.",
+privacy_ga_processor: "<strong>Processor:</strong> We use Google Analytics. Google may transfer this data outside the EEA under standard contractual clauses.",
+privacy_booking_title: "B. When you book or purchase a lesson",
+privacy_booking_collected: "<strong>Data collected:</strong> Your full name, email address, physical/billing address, booking history, and time zone.",
+privacy_booking_purpose: "<strong>Purpose:</strong> To schedule your lessons, manage your account (via SuperSaaS), communicate with you regarding your bookings, and fulfill our service obligations.",
+privacy_booking_basis: "<strong>Legal Basis:</strong> Performance of a contract (Art. 6(1)(b) GDPR). Without this data, we cannot provide the tutoring services you purchased.",
+privacy_payment_title: "C. Payment Processing",
+privacy_payment_collected: "<strong>Data collected:</strong> Payment card details, billing address, and transaction history.",
+privacy_payment_note: "<strong>Important Note:</strong> We do <em>not</em> see, collect, or store your full credit card number or CVV code. All payments are securely processed directly by our payment gateway, <strong>Stripe</strong>.",
+privacy_payment_basis: "<strong>Legal Basis:</strong> Performance of a contract (Art. 6(1)(b) GDPR) and compliance with legal obligations (Art. 6(1)(c) GDPR).",
+privacy_retention_title: "3. How Long We Keep Your Data (Data Retention)",
+privacy_retention_intro: "We keep your personal data only for as long as is necessary for the purposes set out in this Privacy Notice:",
+privacy_retention_ga: "<strong>Analytics data:</strong> Retained by Google Analytics for a standard period of 14 months before being automatically deleted.",
+privacy_retention_customer: "<strong>Customer and Booking data:</strong> Retained for the duration of your active relationship with us, plus a short administrative period after your last lesson.",
+privacy_retention_billing: "<strong>Billing and Accounting records:</strong> Under Hungarian Accounting Law (Act C of 2000 on Accounting, Section 169), we are legally required to retain accounting documents, invoices, and related payment data for a minimum of <strong>8 years</strong>.",
+privacy_sharing_title: "4. Data Sharing and Third-Party Processors",
+privacy_sharing_body: "We do not sell, rent, or trade your personal data to third parties for marketing purposes. We only share data with trusted third-party service providers (Data Processors) necessary to operate our business, such as <strong>Stripe</strong> (for secure payment processing), <strong>SuperSaaS</strong> (for managing calendar bookings), and <strong>Google Analytics</strong> (only if you consent). We ensure that all our processors are GDPR-compliant.",
+privacy_rights_title: "5. Your Data Protection Rights",
+privacy_rights_body: "Under the GDPR, you have the right to access, request a copy of, correct, or delete your personal data. You also have the right to object to or restrict its processing, and to withdraw your consent (e.g. for cookies) at any time. To exercise any of these rights, please contact us at <a href=\"mailto:turkofil.language@gmail.com\">turkofil.language@gmail.com</a>. We will respond to your request within one month.",
+privacy_complaint_title: "6. Right to Lodge a Complaint",
+privacy_complaint_body: "If you believe that our processing of your personal data violates the GDPR, you have the right to lodge a complaint with your local supervisory authority or with the Hungarian National Authority for Data Protection and Freedom of Information (NAIH):",
+privacy_naih_address: "<strong>Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)</strong><br>Address: 1055 Budapest, Falk Miksa utca 9-11., Hungary<br>Mailing address: 1363 Budapest, Pf.: 9.<br>Email: <a href=\"mailto:ugyfelszolgalat@naih.hu\">ugyfelszolgalat@naih.hu</a><br>Website: <a href=\"http://www.naih.hu\" target=\"_blank\" rel=\"noopener noreferrer\">www.naih.hu</a>",
+
+
+modal_sale_title: "Distance Sale Agreement & Pre-Contractual Information",
+modal_decline_btn: "Cancel",
+modal_accept_btn: "I Read and Approve",
+modal_sale_body: "<h4>1. PARTIES</h4><p>This agreement is concluded between the Service Provider turkofil.com, based in Budapest, Hungary, and the user (Buyer) purchasing services via turkofil.com.</p><h4>2. SUBJECT</h4><p>The subject of this agreement is to determine the legal rights and obligations regarding the sale and delivery of live 1-on-1 language lesson packages ordered electronically by the Buyer.</p><h4>3. BOOKING & CANCELLATION</h4><p>Purchased lesson packages are scheduled via SuperSaaS. Booked lessons must be rescheduled or canceled at least 24 hours in advance; otherwise, they will be counted as conducted.</p><h4>4. EXPIRATION</h4><p>Unless specified otherwise, all lesson packages must be consumed within 6 months from the date of purchase. Expired lessons will become invalid.</p><h4>5. RIGHT OF WITHDRAWAL EXCEPTION</h4><p>Pursuant to EU Consumer Rights legislation, if the performance of live lessons has begun with the Buyer's explicit consent before the 14-day withdrawal period, no refund can be made for the conducted lessons.</p>"	
   },
+  
+  
+  
+  
   FR: {
     nav_home: "Accueil",
     nav_bio: "À propos",
@@ -286,7 +372,50 @@ pwa_install_ios_2: 'Appuie sur <strong>Partager</strong> <svg width="14" height=
 pwa_install_ios_3: 'Fais défiler et sélectionne <strong>"Sur l\'écran d\'accueil"</strong> — c\'est fait ! 🎉',
 pwa_install_ff_1: 'Appuie sur les <strong>⋮ trois points</strong> en haut à droite',
 pwa_install_ff_2: 'Appuie sur <strong>"Ajouter à l\'écran d\'accueil"</strong>',
-pwa_install_ff_3: 'Fais glisser l\'icône ou appuie sur <strong>"Ajouter automatiquement"</strong> 🎉'
+pwa_install_ff_3: 'Fais glisser l\'icône ou appuie sur <strong>"Ajouter automatiquement"</strong> 🎉',
+
+
+// --- Privacy Notice FR ---
+footer_privacy: "Avis de confidentialité",
+privacy_title: "Avis de confidentialité",
+privacy_updated: "Dernière mise à jour : Juillet 2026",
+privacy_intro: "Cet Avis de confidentialité explique comment nous collectons, utilisons et protégeons vos données personnelles lorsque vous visitez <strong>turkofil.com</strong> et achetez nos services. Nous nous engageons à garantir la protection de votre vie privée conformément au Règlement général sur la protection des données (RGPD - (UE) 2016/679).",
+privacy_who_title: "1. Responsable du traitement (Qui sommes-nous)",
+privacy_who_body: "Aux fins du RGPD, le responsable du traitement est <strong>Tayfun Tümtürk</strong>, basé à Budapest, Hongrie. Pour toute question relative à la confidentialité, veuillez contacter : <a href=\"mailto:turkofil.language@gmail.com\">turkofil.language@gmail.com</a>.",
+privacy_what_title: "2. Quelles données nous collectons et pourquoi",
+privacy_what_intro: "Nous collectons et traitons différents types de données personnelles en fonction de la manière dont vous interagissez avec notre site web :",
+privacy_ga_title: "A. Lorsque vous visitez notre site web (Analytique)",
+privacy_ga_collected: "<strong>Données collectées :</strong> Adresse IP (anonymisée), type de navigateur, type d'appareil, pages visitées et temps passé sur le site.",
+privacy_ga_purpose: "<strong>Objectif :</strong> Analyser le trafic du site web, améliorer l'expérience utilisateur et optimiser nos services.",
+privacy_ga_basis: "<strong>Base juridique :</strong> Votre consentement explicite (Art. 6(1)(a) du RGPD), obtenu via notre bannière de consentement aux cookies. Vous pouvez retirer votre consentement à tout moment en cliquant sur le lien \"Gérer les préférences\" sur notre site web.",
+privacy_ga_processor: "<strong>Sous-traitant :</strong> Nous utilisons Google Analytics. Google peut transférer ces données en dehors de l'EEE (Espace économique européen) dans le cadre de clauses contractuelles types.",
+privacy_booking_title: "B. Lorsque vous réservez ou achetez un cours",
+privacy_booking_collected: "<strong>Données collectées :</strong> Votre nom complet, adresse e-mail, adresse physique/de facturation, historique des réservations et fuseau horaire.",
+privacy_booking_purpose: "<strong>Objectif :</strong> Planifier vos cours, gérer votre compte (via SuperSaaS), communiquer avec vous concernant vos réservations et remplir nos obligations de service.",
+privacy_booking_basis: "<strong>Base juridique :</strong> Exécution d'un contrat (Art. 6(1)(b) du RGPD). Sans ces données, nous ne pouvons pas fournir les services de tutorat que vous avez achetés.",
+privacy_payment_title: "C. Traitement des paiements",
+privacy_payment_collected: "<strong>Données collectées :</strong> Détails de la carte de paiement, adresse de facturation et historique des transactions.",
+privacy_payment_note: "<strong>Remarque importante :</strong> Nous ne voyons, ne collectons ni ne stockons <em>jamais</em> votre numéro de carte de crédit complet ou votre code CVV. Tous les paiements sont traités directement et en toute sécurité par notre passerelle de paiement, <strong>Stripe</strong>.",
+privacy_payment_basis: "<strong>Base juridique :</strong> Exécution d'un contrat (Art. 6(1)(b) du RGPD) et respect des obligations légales (Art. 6(1)(c) du RGPD).",
+privacy_retention_title: "3. Combien de temps nous conservons vos données (Conservation des données)",
+privacy_retention_intro: "Nous ne conservons vos données personnelles que le temps nécessaire aux fins énoncées dans cet Avis de confidentialité :",
+privacy_retention_ga: "<strong>Données analytiques :</strong> Conservées par Google Analytics pour une période standard de 14 mois avant d'être automatiquement supprimées.",
+privacy_retention_customer: "<strong>Données des clients et des réservations :</strong> Conservées pendant la durée de votre relation active avec nous, plus une courte période administrative après votre dernier cours.",
+privacy_retention_billing: "<strong>Dossiers de facturation et de comptabilité :</strong> Conformément à la loi comptable hongroise (loi C de 2000 sur la comptabilité, section 169), nous sommes légalement tenus de conserver les documents comptables, les factures et les données de paiement associées pendant au moins <strong>8 ans</strong>.",
+privacy_sharing_title: "4. Partage des données et sous-traitants tiers",
+privacy_sharing_body: "Nous ne vendons, ne louons ni n'échangeons vos données personnelles à des tiers à des fins de marketing. Nous ne partageons les données qu'avec des prestataires de services tiers de confiance (Sous-traitants) nécessaires à l'exploitation de notre entreprise : <strong>Stripe</strong> (pour le traitement sécurisé des paiements), <strong>SuperSaaS</strong> (pour la gestion des réservations de calendrier) et <strong>Google Analytics</strong> (uniquement si vous y consentez). Nous nous assurons que tous nos sous-traitants sont conformes au RGPD.",
+privacy_rights_title: "5. Vos droits en matière de protection des données",
+privacy_rights_body: "En vertu du RGPD, vous avez le droit d'accéder à vos données personnelles, d'en demander une copie, de les corriger ou de les supprimer. Vous avez également le droit de vous opposer à leur traitement ou de le restreindre, et de retirer votre consentement (par ex. pour les cookies) à tout moment. Pour exercer l'un de ces droits, veuillez nous contacter à <a href=\"mailto:turkofil.language@gmail.com\">turkofil.language@gmail.com</a>. Nous répondrons à votre demande dans un délai d'un mois.",
+privacy_complaint_title: "6. Droit de déposer une plainte",
+privacy_complaint_body: "Si vous estimez que notre traitement de vos données personnelles enfreint le RGPD, vous avez le droit de déposer une plainte auprès de votre autorité de contrôle locale ou auprès de l'Autorité nationale hongroise pour la protection des données et la liberté d'information (NAIH) :",
+privacy_naih_address: "<strong>Nemzeti Adatvédelmi és Információszabadság Hatóság (NAIH)</strong><br>Adresse : 1055 Budapest, Falk Miksa utca 9-11., Hongrie<br>Adresse postale : 1363 Budapest, Pf.: 9.<br>E-mail : <a href=\"mailto:ugyfelszolgalat@naih.hu\">ugyfelszolgalat@naih.hu</a><br>Site web : <a href=\"http://www.naih.hu\" target=\"_blank\" rel=\"noopener noreferrer\">www.naih.hu</a>",
+
+
+modal_sale_title: "Contrat de Vente à Distance et Informations Précontractuelles",
+modal_decline_btn: "Annuler",
+modal_accept_btn: "Lu et J'accepte",
+modal_sale_body: "<h4>1. PARTIES</h4><p>Ce contrat est conclu entre le Prestataire de Services turkofil.com, basé à Budapest, Hongrie, et l'utilisateur (Acheteur) achetant des services via turkofil.com.</p><h4>2. OBJET</h4><p>L'objet de ce contrat est de déterminer les droits et obligations légaux concernant la vente et la livraison de packages de cours de langue individuels en direct commandés par l'Acheteur.</p><h4>3. RÉSERVATION ET ANNULATION</h4><p>Les packages de cours achetés sont planifiés via SuperSaaS. Les cours réservés doivent être reportés ou annulés au moins 24 heures à l'avance ; sinon, ils seront considérés comme effectués.</p><h4>4. EXPIRATION</h4><p>Sauf indication contraire, tous les packages de cours doivent être consommés dans les 6 mois suivant la date d'achat. Les cours expirés deviendront invalides.</p><h4>5. EXCEPTION AU DROIT DE RÉTRACTATION</h4><p>Conformément à la législation européenne sur les droits des consommateurs, si l'exécution des cours en direct a commencé avec le consentement explicite de l'Acheteur avant le délai de rétractation de 14 jours, aucun remboursement ne pourra être effectué pour les cours dispensés.</p>"
+
   }
 };
 
@@ -325,6 +454,26 @@ document.querySelectorAll('[data-i18n]').forEach(el => {
     b.classList.toggle('active', b.getAttribute('data-lang') === lang);
   });
   document.documentElement.lang = lang === 'TR' ? 'tr' : lang === 'FR' ? 'fr' : 'en';
+updateCookieConsentLanguage(lang);
+  
+if (window.CookieConsent && typeof CookieConsent.setLanguage === 'function') {
+    var ccLang = lang.toLowerCase(); // CookieConsent küçük harf 'tr'/'en'/'fr' bekliyor
+    CookieConsent.setLanguage(ccLang, true);
+  }
+}
+
+function updateCookieConsentLanguage(lang) {
+  var ccLang = lang.toLowerCase();
+  if (window.CookieConsent && typeof CookieConsent.setLanguage === 'function') {
+    CookieConsent.setLanguage(ccLang, true);
+  } else {
+    // Kütüphane henüz yüklenmediyse, biraz sonra tekrar dene
+    setTimeout(function () {
+      if (window.CookieConsent && typeof CookieConsent.setLanguage === 'function') {
+        CookieConsent.setLanguage(ccLang, true);
+      }
+    }, 500);
+  }
 }
 
 function initLangSwitcher() {
@@ -365,4 +514,53 @@ document.addEventListener('DOMContentLoaded', () => {
   initLangSwitcher();
   setActiveNav();
   initScrollReveal();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const modal = document.getElementById("legal-modal");
+  const closeBtn = document.getElementById("close-legal-modal");
+  const declineBtn = document.getElementById("decline-legal-btn");
+  const acceptBtn = document.getElementById("accept-legal-btn");
+  const buyButtons = document.querySelectorAll(".package-buy-btn");
+  
+  let targetUrl = ""; 
+
+  if (buyButtons.length > 0 && modal) {
+    buyButtons.forEach(button => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault(); 
+        targetUrl = button.getAttribute("data-url");
+        modal.style.display = "flex";
+      });
+    });
+
+    const closeModal = () => {
+      modal.style.display = "none";
+      targetUrl = ""; 
+    };
+
+    closeBtn.addEventListener("click", closeModal);
+    declineBtn.addEventListener("click", closeModal);
+
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    acceptBtn.addEventListener("click", () => {
+      if (targetUrl) {
+        if (targetUrl.startsWith("#")) {
+          // Eğer link sayfa içi bir çapa ise (#calendar gibi), oraya kaydır
+          modal.style.display = "none";
+          const targetElement = document.querySelector(targetUrl);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: "smooth" });
+          }
+        } else {
+          // Eğer harici bir dükkan linki ise, yeni sekmede dükkanı aç
+          window.open(targetUrl, "_blank", "noopener,noreferrer");
+          modal.style.display = "none";
+        }
+      }
+    });
+  }
 });

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-
-<script src="./assets/js/analytics.js"></script>
+  <script src="./assets/js/analytics.js"></script>
+  <script src="./assets/js/cookieconsent-loader.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book a Lesson — Turkofil</title>
@@ -110,7 +110,7 @@ open the door to Turkish.</h1>
             <li data-i18n="plan1_f1">50-minute live session</li>
             <li data-i18n="plan1_f3">Personalized feedback</li>
           </ul>
-          <a href="#calendar" class="btn-primary" style="margin-top:var(--space-2);text-align:center;justify-content:center;" data-i18n="hero_single_cta">Get a single lesson</a>
+          <a href="#calendar" class="btn-primary package-buy-btn" data-url="#calendar" style="margin-top:var(--space-2);text-align:center;justify-content:center;" data-i18n="hero_single_cta">Get a single lesson</a>
         </article>
 
         <!-- Plan 2: 5-pack -->
@@ -127,9 +127,8 @@ open the door to Turkish.</h1>
             <li data-i18n="plan2_f3">Reschedule up to 24h before</li>
           </ul>
           <a href="https://www.supersaas.com/shop/buy/turkofil"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="btn-primary"
+             class="btn-primary package-buy-btn"
+             data-url="https://www.supersaas.com/shop/buy/turkofil"
              style="margin-top:var(--space-2);text-align:center;justify-content:center;"
              data-i18n="plan2_cta">
             Get 5 Lessons
@@ -150,9 +149,8 @@ open the door to Turkish.</h1>
             <li data-i18n="plan2_f3">Reschedule up to 24h before</li>
           </ul>
           <a href="https://www.supersaas.com/shop/buy/turkofil"
-             target="_blank"
-             rel="noopener noreferrer"
-             class="btn-primary"
+             class="btn-primary package-buy-btn"
+             data-url="https://www.supersaas.com/shop/buy/turkofil"
              style="margin-top:var(--space-2);text-align:center;justify-content:center;"
              data-i18n="plan3_cta">
             Get 10 Lessons
@@ -194,6 +192,37 @@ open the door to Turkish.</h1>
       </div>
     </div>
   </section>
+
+<!-- SATIŞ SÖZLEŞMESİ AÇILIR PENCERESİ (MODAL) -->
+<div id="legal-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center; padding: var(--space-4); backdrop-filter: blur(4px);">
+  <div style="background: var(--color-bg, #ffffff); max-width: 600px; width: 100%; max-height: 80vh; border-radius: var(--radius-xl); display: flex; flex-direction: column; box-shadow: var(--shadow-xl); border: 1px solid oklch(from var(--color-text) l c h / 0.08); overflow: hidden; animation: modalFadeIn 0.2s ease-out;">
+    
+    <!-- Modal Başlık -->
+    <div style="padding: var(--space-4); border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.08); display: flex; justify-content: space-between; align-items: center;">
+      <h3 style="margin: 0; font-size: 1.2rem; font-weight: 600;" data-i18n="modal_sale_title">Mesafeli Satış Sözleşmesi</h3>
+      <button id="close-legal-modal" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--color-text-muted); line-height: 1;">&times;</button>
+    </div>
+    
+    <!-- Modal İçerik (Sözleşme Metni) -->
+    <div id="legal-modal-body" style="padding: var(--space-5); overflow-y: auto; font-size: var(--text-sm); line-height: 1.6; color: var(--color-text); text-align: left;" data-i18n-html="modal_sale_body">
+      <!-- Dil dosyalarından gelecek olan sözleşme metni buraya basılacak -->
+    </div>
+    
+    <!-- Modal Alt Butonlar -->
+    <div style="padding: var(--space-4); border-top: 1px solid oklch(from var(--color-text) l c h / 0.08); display: flex; justify-content: flex-end; gap: var(--space-3); background: oklch(from var(--color-text) l c h / 0.02);">
+      <button id="decline-legal-btn" class="btn-secondary" style="padding: 0.6rem 1.2rem;" data-i18n="modal_decline_btn">Vazgeç</button>
+      <button id="accept-legal-btn" class="btn-primary" style="padding: 0.6rem 1.4rem;" data-i18n="modal_accept_btn">Okudum, Onaylıyorum</button>
+    </div>
+    
+  </div>
+</div>
+
+<style>
+  @keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
 
 </main>
 

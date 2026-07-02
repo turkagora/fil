@@ -147,10 +147,10 @@ function injectFooter() {
       <img src="./assets/img/logo.png" alt="Turkofil logo" width="32" height="32" loading="lazy">
       <span class="footer-brand-name">Türko<span>fil</span></span>
     </a>
-    <nav class="footer-links" aria-label="Footer navigation">
-      ${buildNavLinks()}
-      <a href="./lessons.html" data-i18n="nav_lessons">Book a Lesson</a>
-    </nav>
+<nav class="footer-links" aria-label="Footer navigation">
+  ${buildNavLinks()}
+  <a href="./privacy.html" data-i18n="footer_privacy">Privacy Notice</a>
+</nav>
     <div class="footer-social">
       <a href="https://www.instagram.com/turkishwithturkofil/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
