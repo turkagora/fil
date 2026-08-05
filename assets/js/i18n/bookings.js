@@ -1,0 +1,53 @@
+window.i18nPage = {
+  TR: {
+    cal_label: "Takvim", bookingstitle: "Derslerinizi Yönetin",
+    bookingsloginhint: "Rezervasyonlarınızı yönetmek için lütfen aşağıdaki takvim panelinin <strong>sağ üstündeki</strong> <strong>Register or Sign in </strong> butonuna tıklayın.",
+    bookingsintro: "Giriş yaptıktan sonra şunları yapabilirsiniz:",
+    bookingsli0: "Bir slot seçip rezervasyon yapın. Hesabınızdan otomatik olarak her ders için <strong>1 kredi düşülür</strong>.",
+    bookingsli1: "Gelecek ve geçmiş tüm derslerinize göz atın.",
+	bookingsli2: "Bir dersi ertelemek için mevcut rezervasyonunuzu silin ve yeni bir slot seçin <strong>(son 24 saate kadar geçerli)</strong>.",
+    bookingsli3: "Paketinizde kaç ders kaldığını hesap ayarlarınızdan görebilirsiniz.",
+    booking_info_credits: 'Henüz krediniz yok mu? Önce bir paket satın alın — ödeme sonrası hesabınıza otomatik olarak kredi tanımlanır. <a href="./lessons.html">Ders paketlerine göz atın</a>.',
+    bookings_guide_title: "Nasıl çalışır", bookings_guide_sub: "Başlamak için iki adım:",
+    step1_title: "Sağ üstten giriş yapın", step1_desc: "<strong>Takvimin üstündeki Register or Sign in butonuna</strong> tıklayın.",
+    step3_title: "Rezervasyonları Yönetin", step3_desc: "Bu görünüm gelecek derslerinizi listeler. Geçmiş derslerinizi görmek için 'Show history' butonuna da tıklayabilirsiniz.",
+    rs_step1_title: "Düzenleme Simgesine Tıklayın", rs_step1_desc: "Bir dersi değiştirmek için listeden dersi bulun ve okla gösterilen mavi kalem simgesine (düzenle) tıklayın.",
+    rs_step2_title: "İptal Et / Sil", rs_step2_desc: "Açılan menüde, rezervasyonunuzu iptal etmek için kırmızı çöp kutusu simgesine tıklayın. Krediniz otomatik olarak iade edilecektir.",
+    legend_title: "Takvimi Anlamak", legend_sub: "Renkler size her şeyi anlatır:",
+    legend_yours_label: "Sizin Rezervasyonunuz", legend_taken_label: "Dolu / Başkası Almış", legend_free_label: "Müsait / Alınabilir"
+  },
+  EN: {
+    cal_label: "Calendar", bookingstitle: "Manage your lessons",
+    bookingsloginhint: "To manage your bookings, please click the <strong>Register or Sign in</strong> button <strong>at the top of the calendar panel</strong>.",
+    bookingsintro: "Once logged in, you can:",
+    bookingsli0: "Simply book a slot and your credits are deducted automatically. Each lesson <strong>costs 1 credit</strong>.",
+    bookingsli1: "See your past and future lessons' details",
+	bookingsli2: "Change a booking by deleting your current reservation and selecting a new available time slot <strong>(at least 24 hours in advance)</strong>.",
+    bookingsli3: "Check your remaining lesson balance in your account settings.",
+	booking_info_credits: 'No credits yet? Purchase a package first — after payment, your account is credited automatically. <a href="./lessons.html">See lesson packages</a>.',
+    bookings_guide_title: "How it works", bookings_guide_sub: "Just follow these two steps:",
+    step1_title: "Sign in — top right corner", step1_desc: "Click <strong>Register or Sign in</strong> in the top right of the calendar.",
+    step3_title: "Manage Reservations", step3_desc: "This view shows your upcoming lessons. You can also click the 'Show history' button to view your past reservations.",
+    rs_step1_title: "Click the Edit Icon", rs_step1_desc: "To change a booking, find the lesson in your list and click the blue pencil icon (edit) as shown by the arrow.",
+    rs_step2_title: "Cancel / Delete", rs_step2_desc: "In the menu that opens, click the red trash icon to cancel your reservation. Your credit will be returned automatically.",
+    legend_title: "Understanding the calendar", legend_sub: "Slot colors tell you everything at a glance:",
+    legend_yours_label: "Your Reservation", legend_taken_label: "Full / Taken", legend_free_label: "Available"
+  },
+  FR: {
+    cal_label: "Calendrier", bookingstitle: "Gérer vos leçons",
+    bookingsloginhint: "Pour gérer vos réservations, cliquez sur le bouton <strong>Register or Sign in</strong> <strong>en haut du calendrier</strong> ci-dessous.",
+    bookingsintro: "Une fois connecté(e), vous pouvez :",
+    bookingsli0: "Réservez simplement un créneau et vos crédits sont déduits automatiquement. Chaque cours <strong>coûte 1 crédit</strong>.",
+    bookingsli1: "Consultez toutes vos leçons à venir et passées.",
+	bookingsli2: "Modifier une réservation en supprimant votre cours actuel et en choisissant un nouveau créneau disponible <strong>(au moins 24 heures à l'avance)</strong>.",
+    bookingsli3: "Vérifier le solde de vos cours restants dans les paramètres de votre compte.",
+    booking_info_credits: 'Pas encore de crédits ? Achetez d\'abord un forfait — après paiement, votre compte est crédité automatiquement. <a href="./lessons.html">Voir les forfaits</a>.',
+    bookings_guide_title: "Comment ça marche", bookings_guide_sub: "Suivez ces deux étapes :",
+    step1_title: "Connexion — en haut à droite", step1_desc: "Cliquez sur <strong>Register or Sign in</strong> en haut à droite du calendrier.",
+    step3_title: "Gérer les réservations", step3_desc: "Cette vue affiche vos cours à venir. Cliquez sur 'Show history' pour voir vos cours passés.",
+    rs_step1_title: "Cliquez sur l'icône d'édition", rs_step1_desc: "Pour modifier un cours, trouvez-le dans votre liste et cliquez sur l'icône de crayon bleu (modifier).",
+    rs_step2_title: "Annuler / Supprimer", rs_step2_desc: "Dans le menu qui s'ouvre, cliquez sur l'icône de poubelle rouge. Votre crédit sera automatiquement remboursé.",
+    legend_title: "Comprendre le calendrier", legend_sub: "Les couleurs vous disent tout en un coup d'œil :",
+    legend_yours_label: "Votre réservation", legend_taken_label: "Complet / Occupé", legend_free_label: "Disponible"
+  }
+};

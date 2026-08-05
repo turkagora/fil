@@ -1,0 +1,50 @@
+window.i18nCommon = {
+  TR: {
+    nav_home: "Ana Sayfa", nav_bio: "Hakkımda", nav_lessons: "Dersler", navbookings: "Rezervasyonlarım",
+    hero_eyebrow: "Yabancılar İçin Türkçe Öğretmeni", hero_title_1: "Türkçeyi", hero_title_2: "zorlanmadan", hero_title_3: "öğren.",
+    hero_subtitle: "Canlı birebir derslerle kendi hızında konuşmayı, okumayı ve yazmayı öğren.",
+    hero_cta: "Paketleri İncele", hero_cta2: "Seviye Testi", hero_bmc: "Destek Ol",
+    hero_follow: "Instagram'da Takip Et", hero_social_label: "Sosyal Medya",
+    bio_label: "Hakkımda", bio_title: "Merhaba, ben Tayfun.",
+    bio_intro: "Yabancılara Türkçe öğretmek benim için sadece bir meslek değil, farklı kültürlerle bağ kurmanın en güzel yolu.",
+    bio_p1: "2016'da Marmara Üniversitesi Fransızca Öğretmenliği bölümünden mezun oldum. Öğretmenlik kariyerime İstanbul'un en köklü okullarından Saint-Joseph Fransız Lisesi'nde yaptığım stajla adım attım. Böylesine nitelikli ve dinamik bir ortamda çalışmak, bana dil eğitimine dair çok güçlü bir temel kazandırdı.",
+    bio_p2: "Daha sonra eğitimime Macaristan'da devam etme kararı aldım ve Szeged Üniversitesi'nde Uluslararası İlişkiler alanında yüksek lisansımı tamamladım. Bu akademik süreç, dil ve kültür ilişkisine daha geniş ve uluslararası bir vizyonla bakmamı sağladı.",
+    bio_p3: "Yıllardır anadilim olan Türkçeyi dünyanın dört bir yanından gelen öğrencilere büyük bir keyifle öğretiyorum. Pedagojik altyapım ve tecrübelerim sayesinde ezberden uzak, tamamen öğrencilerimin ihtiyaçlarına göre şekillenen interaktif dersler sunuyorum. Profesyonel seviyede Fransızca ve İngilizce; orta seviyede İspanyolca ve başlangıç seviyesinde Macarca biliyorum.",
+    bio_tags: ["A1–C1 Seviyeleri", "Canlı Birebir", "Çevrimiçi", "Konuşma Odaklı", "Kültür ve Dil"],
+    footer_copy: "© 2026 Turkofil. Tüm hakları saklıdır.", footer_privacy: "Gizlilik Bildirimi",
+    reviews_label: "Öğrenci Yorumları", reviews_title: "Öğrencilerim ne diyor?",
+    bmc: "Bana bir kahve ısmarlamak ister misin? ☕"
+  },
+  EN: {
+    nav_home: "Home", nav_bio: "About Me", nav_lessons: "Lessons", navbookings: "My Bookings",
+    hero_eyebrow: "Turkish Language Tutor", hero_title_1: "Learn Turkish", hero_title_2: "the natural", hero_title_3: "way.",
+    hero_subtitle: "Master speaking, reading, and writing with live one-on-one lessons tailored to your pace.",
+    hero_cta: "Lesson Packages", hero_cta2: "Placement Test", hero_bmc: "Support My Work",
+    hero_follow: "Follow me on Instagram", hero_social_label: "Socials",
+    bio_label: "About Me", bio_title: "Hello, I'm Tayfun.",
+    bio_intro: "I am a teacher of Turkish as a foreign language, deeply passionate about languages and intercultural exchange.",
+    bio_p1: "I graduated in 2016 from Marmara University in Istanbul with a degree in Teaching French as a Foreign Language (FLE). I then completed a pedagogical internship at the prestigious Saint-Joseph French High School in Istanbul, gaining valuable teaching experience in a highly demanding and stimulating francophone environment.",
+    bio_p2: "My academic journey later took me to Hungary, where I earned a Master's degree in International Relations from the Francophone University Centre at the University of Szeged. This experience broadened my understanding of global cultural and linguistic dynamics.",
+    bio_p3: "Turkish is my native language, and I have been teaching it with great enthusiasm to students of all levels for several years. Drawing on my background in language didactics and practical experience, I offer structured, interactive lessons tailored to your specific needs. I speak fluent English and French professionally, alongside pre-intermediate Spanish and beginner Hungarian.",
+    bio_tags: ["A1–C1 Levels", "Live 1-on-1", "Online", "Conversation-driven", "Culture & Language"],
+    footer_copy: "© 2026 Turkofil. All rights reserved.", footer_privacy: "Privacy Notice",
+    reviews_label: "Student Reviews", reviews_title: "What my students say",
+    bmc: "Buy me a coffee ☕"
+  },
+  FR: {
+    nav_home: "Accueil", nav_bio: "À propos", nav_lessons: "Cours", navbookings: "Mes réservations",
+    hero_eyebrow: "Professeur de turc", hero_title_1: "Le turc", hero_title_2: "sans peine", hero_title_3: "mais avec aisance.",
+    hero_subtitle: "Expression orale, lecture et écriture — des cours particuliers en direct, à ton propre rythme.",
+    hero_cta: "Découvrir les offres", hero_cta2: "Test de niveau", hero_bmc: "Soutenir mon travail",
+    hero_follow: "Suis-moi sur Instagram", hero_social_label: "Réseaux",
+    bio_label: "À propos", bio_title: "Bonjour, je suis Tayfun.",
+    bio_intro: "Je suis enseignant de turc langue étrangère, passionné par les langues et la transmission interculturelle.",
+    bio_p1: "Diplômé en 2016 de l'Université de Marmara à Istanbul, j'y ai obtenu une licence en enseignement du français langue étrangère (FLE). J'ai ensuite effectué un stage pédagogique au prestigieux Lycée Français Saint-Joseph d'Istanbul, où j'ai eu l'occasion d'enseigner dans un environnement francophone exigeant et stimulant.",
+    bio_p2: "Mon parcours m'a également conduit à élargir ma formation avec un master en relations internationales obtenu au Centre universitaire francophone de l'Université de Szeged, en Hongrie. Cette expérience m'a permis d'approfondir ma compréhension des enjeux culturels et linguistiques à l'échelle mondiale.",
+    bio_p3: "Le turc est ma langue maternelle, et j'enseigne cette langue avec enthousiasme depuis plusieurs années à des apprenants de tous niveaux. Grâce à ma formation en didactique des langues et à mon expérience pratique, je propose des cours structurés, interactifs et adaptés aux besoins de chacun. Je parle couramment le français et l'anglais dans un cadre professionnel, avec un niveau pré-intermédiaire en espagnol et débutant en hongrois.",
+    bio_tags: ["Niveaux A1–C1", "1-à-1 en direct", "En ligne", "Axé sur la conversation", "Culture & Langue"],
+    footer_copy: "© 2026 Turkofil. Tous droits réservés.", footer_privacy: "Avis de confidentialité",
+    reviews_label: "Avis des Étudiants", reviews_title: "Ce que disent mes élèves",
+    bmc: "M'offrir un café ☕"
+  }
+};

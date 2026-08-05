@@ -1,6 +1,8 @@
 // assets/js/cookieconsent-loader.js
 
 (function () {
+  if (window.self !== window.top) return;  // iframe içindeyse cookie banner'ı yükleme
+
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   window.gtag = gtag;
