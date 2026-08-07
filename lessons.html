@@ -37,41 +37,48 @@
     transform: translateY(-2px);
   }
 
-  .category-card-banner {
-    padding: var(--space-5);
-    display: flex;
-    align-items: flex-start;
-    gap: var(--space-4);
-    background: linear-gradient(135deg, oklch(from var(--color-primary, #16a34a) l c h / 0.12), oklch(from var(--color-primary, #16a34a) l c h / 0.03));
-    border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.06);
-    position: relative;
-    flex-wrap: wrap;
-  }
-
-  .category-card-icon {
-    width: 56px;
-    height: 56px;
-    flex-shrink: 0;
-    border-radius: var(--radius-lg);
+  /* ══════════ ILLUSTRATION — no frame, no color block, sits directly on the card ══════════ */
+  .category-card-media {
+    padding: var(--space-6) var(--space-6) var(--space-2);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--color-primary, #16a34a);
-    color: #fff;
-    box-shadow: var(--shadow-sm);
   }
 
-  .category-card-banner-text {
+  .category-card-media img {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    display: block;
+  }
+
+  @media (max-width: 480px) {
+    .category-card-media { padding: var(--space-5) var(--space-5) var(--space-1); }
+    .category-card-media img { max-width: 200px; }
+  }
+
+  .category-card-heading {
+    padding: var(--space-3) var(--space-5) 0;
+  }
+
+  .category-card-heading-row {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    flex-wrap: wrap;
+  }
+
+  .category-card-heading-text {
     flex: 1;
     min-width: 0;
   }
 
-  .category-card-banner h2 {
+  .category-card-heading h2 {
     margin: 0 0 3px 0;
     font-size: clamp(1.2rem, 2.5vw, 1.55rem);
   }
 
-  .category-card-banner p {
+  .category-card-heading p {
     margin: 0;
     color: var(--color-text-muted);
     font-size: var(--text-sm);
@@ -305,21 +312,23 @@
       <span class="section-label reveal" data-i18n="lessons_label">Book a Lesson</span>
       <h1 class="section-title reveal" id="lessons-heading" style="white-space:pre-line;" data-i18n="lessons_title">Book a lesson,
 open the door to Turkish.</h1>
-     
+
 
       <div class="category-cards">
 
         <!-- CARD 1: One-on-One -->
         <div class="category-card reveal">
-          <div class="category-card-banner">
-            <div class="category-card-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 0 1 12 0v2"/></svg>
+          <div class="category-card-media">
+            <img src="./assets/img/private-class.svg" alt="" aria-hidden="true" loading="lazy">
+          </div>
+          <div class="category-card-heading">
+            <div class="category-card-heading-row">
+              <div class="category-card-heading-text">
+                <h2 data-i18n="cat_private_title">One-on-One Lessons</h2>
+                <p data-i18n="cat_private_sub">Fully personalized to your level and goals.</p>
+              </div>
+              <span class="price-teaser" data-i18n="cat_private_price_teaser">From €21,9 <small>/ lesson</small></span>
             </div>
-            <div class="category-card-banner-text">
-              <h2 data-i18n="cat_private_title">One-on-One Lessons</h2>
-              <p data-i18n="cat_private_sub">Fully personalized to your level and goals.</p>
-            </div>
-            <span class="price-teaser" data-i18n="cat_private_price_teaser">From €21,9 <small>/ lesson</small></span>
           </div>
           <div class="category-card-body">
             <ul class="category-card-info">
@@ -345,15 +354,17 @@ open the door to Turkish.</h1>
 
         <!-- CARD 2: Group -->
         <div class="category-card reveal">
-          <div class="category-card-banner">
-            <div class="category-card-icon">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="category-card-media">
+            <img src="./assets/img/group-class.svg" alt="" aria-hidden="true" loading="lazy">
+          </div>
+          <div class="category-card-heading">
+            <div class="category-card-heading-row">
+              <div class="category-card-heading-text">
+                <h2 data-i18n="cat_group_title">Group Lessons</h2>
+                <p data-i18n="cat_group_sub">Learn together, at a lower cost per person.</p>
+              </div>
+              <span class="price-teaser" data-i18n="cat_group_price_teaser">From €16 <small>/ person</small></span>
             </div>
-            <div class="category-card-banner-text">
-              <h2 data-i18n="cat_group_title">Group Lessons</h2>
-              <p data-i18n="cat_group_sub">Learn together, at a lower cost per person.</p>
-            </div>
-            <span class="price-teaser" data-i18n="cat_group_price_teaser">From €16 <small>/ person</small></span>
           </div>
           <div class="category-card-body">
             <ul class="category-card-info">

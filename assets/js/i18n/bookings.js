@@ -1,53 +1,79 @@
 window.i18nPage = {
-  TR: {
-    cal_label: "Takvim", bookingstitle: "Derslerinizi Yönetin",
-    bookingsloginhint: "Rezervasyonlarınızı yönetmek için lütfen aşağıdaki takvim panelinin <strong>sağ üstündeki</strong> <strong>Register or Sign in </strong> butonuna tıklayın.",
-    bookingsintro: "Giriş yaptıktan sonra şunları yapabilirsiniz:",
-    bookingsli0: "Bir slot seçip rezervasyon yapın. Hesabınızdan otomatik olarak her ders için <strong>1 kredi düşülür</strong>.",
-    bookingsli1: "Gelecek ve geçmiş tüm derslerinize göz atın.",
-	bookingsli2: "Bir dersi ertelemek için mevcut rezervasyonunuzu silin ve yeni bir slot seçin <strong>(son 24 saate kadar geçerli)</strong>.",
-    bookingsli3: "Paketinizde kaç ders kaldığını hesap ayarlarınızdan görebilirsiniz.",
-    booking_info_credits: 'Henüz krediniz yok mu? Önce bir paket satın alın — ödeme sonrası hesabınıza otomatik olarak kredi tanımlanır. <a href="./lessons.html">Ders paketlerine göz atın</a>.',
-    bookings_guide_title: "Nasıl çalışır", bookings_guide_sub: "Başlamak için iki adım:",
-    step1_title: "Sağ üstten giriş yapın", step1_desc: "<strong>Takvimin üstündeki Register or Sign in butonuna</strong> tıklayın.",
-    step3_title: "Rezervasyonları Yönetin", step3_desc: "Bu görünüm gelecek derslerinizi listeler. Geçmiş derslerinizi görmek için 'Show history' butonuna da tıklayabilirsiniz.",
-    rs_step1_title: "Düzenleme Simgesine Tıklayın", rs_step1_desc: "Bir dersi değiştirmek için listeden dersi bulun ve okla gösterilen mavi kalem simgesine (düzenle) tıklayın.",
-    rs_step2_title: "İptal Et / Sil", rs_step2_desc: "Açılan menüde, rezervasyonunuzu iptal etmek için kırmızı çöp kutusu simgesine tıklayın. Krediniz otomatik olarak iade edilecektir.",
-    legend_title: "Takvimi Anlamak", legend_sub: "Renkler size her şeyi anlatır:",
-    legend_yours_label: "Sizin Rezervasyonunuz", legend_taken_label: "Dolu / Başkası Almış", legend_free_label: "Müsait / Alınabilir"
-  },
-  EN: {
-    cal_label: "Calendar", bookingstitle: "Manage your lessons",
-    bookingsloginhint: "To manage your bookings, please click the <strong>Register or Sign in</strong> button <strong>at the top of the calendar panel</strong>.",
-    bookingsintro: "Once logged in, you can:",
-    bookingsli0: "Simply book a slot and your credits are deducted automatically. Each lesson <strong>costs 1 credit</strong>.",
-    bookingsli1: "See your past and future lessons' details",
-	bookingsli2: "Change a booking by deleting your current reservation and selecting a new available time slot <strong>(at least 24 hours in advance)</strong>.",
-    bookingsli3: "Check your remaining lesson balance in your account settings.",
-	booking_info_credits: 'No credits yet? Purchase a package first — after payment, your account is credited automatically. <a href="./lessons.html">See lesson packages</a>.',
-    bookings_guide_title: "How it works", bookings_guide_sub: "Just follow these two steps:",
-    step1_title: "Sign in — top right corner", step1_desc: "Click <strong>Register or Sign in</strong> in the top right of the calendar.",
-    step3_title: "Manage Reservations", step3_desc: "This view shows your upcoming lessons. You can also click the 'Show history' button to view your past reservations.",
-    rs_step1_title: "Click the Edit Icon", rs_step1_desc: "To change a booking, find the lesson in your list and click the blue pencil icon (edit) as shown by the arrow.",
-    rs_step2_title: "Cancel / Delete", rs_step2_desc: "In the menu that opens, click the red trash icon to cancel your reservation. Your credit will be returned automatically.",
-    legend_title: "Understanding the calendar", legend_sub: "Slot colors tell you everything at a glance:",
-    legend_yours_label: "Your Reservation", legend_taken_label: "Full / Taken", legend_free_label: "Available"
-  },
-  FR: {
-    cal_label: "Calendrier", bookingstitle: "Gérer vos leçons",
-    bookingsloginhint: "Pour gérer vos réservations, cliquez sur le bouton <strong>Register or Sign in</strong> <strong>en haut du calendrier</strong> ci-dessous.",
-    bookingsintro: "Une fois connecté(e), vous pouvez :",
-    bookingsli0: "Réservez simplement un créneau et vos crédits sont déduits automatiquement. Chaque cours <strong>coûte 1 crédit</strong>.",
-    bookingsli1: "Consultez toutes vos leçons à venir et passées.",
-	bookingsli2: "Modifier une réservation en supprimant votre cours actuel et en choisissant un nouveau créneau disponible <strong>(au moins 24 heures à l'avance)</strong>.",
-    bookingsli3: "Vérifier le solde de vos cours restants dans les paramètres de votre compte.",
-    booking_info_credits: 'Pas encore de crédits ? Achetez d\'abord un forfait — après paiement, votre compte est crédité automatiquement. <a href="./lessons.html">Voir les forfaits</a>.',
-    bookings_guide_title: "Comment ça marche", bookings_guide_sub: "Suivez ces deux étapes :",
-    step1_title: "Connexion — en haut à droite", step1_desc: "Cliquez sur <strong>Register or Sign in</strong> en haut à droite du calendrier.",
-    step3_title: "Gérer les réservations", step3_desc: "Cette vue affiche vos cours à venir. Cliquez sur 'Show history' pour voir vos cours passés.",
-    rs_step1_title: "Cliquez sur l'icône d'édition", rs_step1_desc: "Pour modifier un cours, trouvez-le dans votre liste et cliquez sur l'icône de crayon bleu (modifier).",
-    rs_step2_title: "Annuler / Supprimer", rs_step2_desc: "Dans le menu qui s'ouvre, cliquez sur l'icône de poubelle rouge. Votre crédit sera automatiquement remboursé.",
-    legend_title: "Comprendre le calendrier", legend_sub: "Les couleurs vous disent tout en un coup d'œil :",
-    legend_yours_label: "Votre réservation", legend_taken_label: "Complet / Occupé", legend_free_label: "Disponible"
-  }
+TR: {
+bookings_hero_label: "Takvim",
+bookings_hero_title: "Dersini saniyeler içinde ayırt.",
+bookings_hero_intro: "Yeni bir randevu ayırt veya mevcut rezervasyonlarını yönet — hepsi tek ekrandan.",
+
+book_card_title: "Yeni Rezervasyon",
+book_card_sub: "Sana uygun gün ve saati seç — anında.",
+book_card_f1: "Canlı, gerçek zamanlı takvimden uygun bir slot seç",
+book_card_f2: "Tek ders veya kredi paketinle anında rezervasyon yap",
+book_card_f3: "Onayını hemen e-posta ile al",
+book_card_note: "Henüz kredin yok mu? <a href=\"./lessons.html\">Ders paketlerine göz at</a> — satın alma sonrası hesabına otomatik kredi tanımlanır.",
+book_card_cta: "Takvimi Aç",
+
+manage_card_title: "Rezervasyonları Yönet",
+manage_card_sub: "Derslerini görüntüle, ertele veya iptal et.",
+manage_card_f1: "Gelecek ve geçmiş tüm derslerini gör",
+manage_card_f2: "Dersinden 24 saat öncesine kadar ertele veya iptal et",
+manage_card_f3: "Kalan kredini hesap ayarlarından takip et",
+manage_card_hint: "Hesabını görmek için takvim içindeki \"Register or Sign in\" butonuyla giriş yap.",
+manage_card_cta: "Rezervasyonlarımı Aç",
+
+
+modal_book_title: "Ders Ayırt",
+modal_manage_title: "Rezervasyonları Yönet"
+},
+
+EN: {
+bookings_hero_label: "Calendar",
+bookings_hero_title: "Book your lesson in seconds.",
+bookings_hero_intro: "Reserve a new time slot or manage your existing bookings — both from one screen.",
+
+book_card_title: "New Booking",
+book_card_sub: "Pick a day and time that works for you — instantly.",
+book_card_f1: "Choose an open slot from the live, real-time calendar",
+book_card_f2: "Book instantly with a single lesson or your credit package",
+book_card_f3: "Get your confirmation by email right away",
+book_card_note: "No credits yet? <a href=\"./lessons.html\">Browse lesson packages</a> — your account is credited automatically after purchase.",
+book_card_cta: "Open Calendar",
+
+manage_card_title: "Manage Bookings",
+manage_card_sub: "View, reschedule, or cancel your lessons.",
+manage_card_f1: "See all your upcoming and past lessons",
+manage_card_f2: "Reschedule or cancel up to 24 hours before your lesson",
+manage_card_f3: "Track your remaining credits in your account settings",
+manage_card_hint: "Sign in with the \"Register or Sign in\" button inside the calendar to see your account.",
+manage_card_cta: "Open My Bookings",
+
+
+modal_book_title: "Book a Lesson",
+modal_manage_title: "Manage Bookings"
+},
+
+FR: {
+bookings_hero_label: "Calendrier",
+bookings_hero_title: "Réserve ton cours en quelques secondes.",
+bookings_hero_intro: "Réserve un nouveau créneau ou gère tes réservations existantes — tout depuis un seul écran.",
+
+book_card_title: "Nouvelle réservation",
+book_card_sub: "Choisis un jour et une heure qui te convient — instantanément.",
+book_card_f1: "Choisis un créneau libre dans le calendrier en temps réel",
+book_card_f2: "Réserve instantanément avec un cours unique ou ton forfait de crédits",
+book_card_f3: "Reçois ta confirmation par e-mail immédiatement",
+book_card_note: "Pas encore de crédits ? <a href=\"./lessons.html\">Découvre les forfaits de cours</a> — ton compte est crédité automatiquement après l'achat.",
+book_card_cta: "Ouvrir le calendrier",
+
+manage_card_title: "Gérer les réservations",
+manage_card_sub: "Consulte, reporte ou annule tes cours.",
+manage_card_f1: "Consulte tous tes cours à venir et passés",
+manage_card_f2: "Reporte ou annule jusqu'à 24 heures avant ton cours",
+manage_card_f3: "Suis tes crédits restants dans les paramètres de ton compte",
+manage_card_hint: "Connecte-toi avec le bouton \"Register or Sign in\" dans le calendrier pour voir ton compte.",
+manage_card_cta: "Ouvrir mes réservations",
+
+
+modal_book_title: "Réserver un cours",
+modal_manage_title: "Gérer les réservations"
+}
 };

@@ -3,6 +3,7 @@
 <head>
   <script src="./assets/js/analytics.js"></script>
   <script src="./assets/js/cookieconsent-loader.js"></script>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Bookings — Turkofil</title>
@@ -10,114 +11,273 @@
   <link rel="icon" href="./assets/img/logo.png" type="image/jpeg">
   <link rel="stylesheet" href="./assets/css/style.css">
 <style>
-  .cal-split {
+  /* ══════════ BOOKING CARDS (mirrors lessons.html category-cards pattern) ══════════ */
+  .booking-cards {
     display: grid;
-    grid-template-columns: 1fr 1.8fr;
-    gap: var(--space-10);
-    align-items: start;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-8);
   }
 
-  .cal-split-left { position: static; }
-  .cal-split-left .section-label { display: block; margin-bottom: var(--space-3); }
-  .cal-split-left .section-title { margin-bottom: var(--space-3); font-size: clamp(1.4rem, 3vw, 2rem); }
-  .cal-split-left p { color: var(--color-text-muted); margin-bottom: var(--space-4); font-size: var(--text-sm); }
-  .cal-split-right { min-width: 0; width: 100%; }
+  @media (max-width: 800px) {
+    .booking-cards { grid-template-columns: 1fr; }
+  }
 
-  .cal-split-right .cal-embed-wrap {
+  .booking-card {
     border-radius: var(--radius-xl);
-    overflow: hidden;
+    background: var(--color-bg-elevated, #fff);
     border: 1px solid oklch(from var(--color-text) l c h / 0.08);
     box-shadow: var(--shadow-md);
-    min-height: 500px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow .25s ease, transform .25s ease;
   }
 
-  .cal-split-right .cal-embed-wrap iframe,
-  .cal-split-right .cal-embed-wrap > div {
-    width: 100% !important;
-    min-height: 500px;
-    display: block;
+  .booking-card:hover {
+    box-shadow: var(--shadow-lg, 0 12px 30px rgba(0,0,0,.12));
+    transform: translateY(-2px);
   }
 
-  @media (max-width: 768px) {
-    .cal-split { grid-template-columns: 1fr; gap: var(--space-8); }
-    .cal-split-right .cal-embed-wrap { min-height: 420px; }
+  /* ── Top illustration band ── */
+.booking-card-media {
+  padding: var(--space-6) var(--space-6) var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booking-card-media img {
+  width: 100%;
+  max-width: 260px;   /* önceki 78% oranına göre çok daha büyük */
+  height: auto;
+  display: block;
+}
+
+  @media (max-width: 480px) {
+    .booking-card-media { height: 130px; }
   }
 
-  .booking-info-box {
+  .booking-card-heading {
+    padding: var(--space-5) var(--space-5) 0;
+  }
+
+  .booking-card-heading h2 {
+    margin: 0 0 3px 0;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+  }
+
+  .booking-card-heading p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .booking-card-body {
+    padding: var(--space-5);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: var(--space-4);
+  }
+
+  .booking-card-info {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     flex-direction: column;
     gap: var(--space-3);
-    padding: var(--space-4);
-    border-radius: var(--radius-lg);
-    background: oklch(from var(--color-primary, #16a34a) l c h / 0.04);
-    border: 1px solid oklch(from var(--color-primary, #16a34a) l c h / 0.12);
-    box-sizing: border-box;
-    width: 100%;
-    margin-bottom: var(--space-4);
+    flex: 1;
   }
 
-  .booking-info-row {
+  .booking-card-info li {
     display: flex;
     align-items: flex-start;
-    gap: var(--space-3);
+    gap: var(--space-2);
     font-size: var(--text-sm);
+    color: var(--color-text);
     line-height: 1.5;
   }
 
-  .booking-info-divider {
-    height: 1px;
-    background: oklch(from var(--color-primary, #16a34a) l c h / 0.15);
-    margin: 2px 0;
-  }
-
-  .booking-info-row svg {
+  .booking-card-info li svg {
     flex-shrink: 0;
     margin-top: 2px;
     color: var(--color-primary, #16a34a);
   }
 
-  .booking-info-row a {
+  .booking-card-note {
+    font-size: var(--text-xs, 0.8rem);
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .booking-card-note a {
     color: var(--color-primary, #16a34a);
     font-weight: 600;
     text-decoration: underline;
   }
 
-  /* ══════════ LEGEND ══════════ */
-  .legend-box {
+  .booking-cta-btn {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
     padding: var(--space-4);
+    border: none;
+    border-radius: var(--radius-lg);
+    background: var(--color-primary, #16a34a);
+    color: #fff;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    cursor: pointer;
+    transition: opacity .2s ease, transform .15s ease;
+  }
+
+  .booking-cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .booking-cta-btn svg { transition: transform .2s ease; }
+  .booking-cta-btn:hover svg { transform: translateX(3px); }
+
+  /* ══════════ LEGEND STRIP ══════════ */
+  .legend-strip {
+    margin-top: var(--space-6);
+    padding: var(--space-4) var(--space-5);
     border-radius: var(--radius-lg);
     border: 1px solid oklch(from var(--color-text) l c h / 0.08);
     background: var(--color-bg-elevated, #fff);
-    margin-bottom: var(--space-4);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
   }
 
-  .legend-item {
+  .legend-strip-title {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: var(--text-sm);
+  }
+
+  .legend-strip-title strong { color: var(--color-text); }
+  .legend-strip-title span { color: var(--color-text-muted); font-size: var(--text-xs, 0.8rem); }
+
+  .legend-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-4);
+  }
+
+  .legend-chip {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 0.8rem;
+    font-size: var(--text-xs, 0.8rem);
     color: var(--color-text-muted);
+    white-space: nowrap;
   }
 
   .legend-dot {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    flex-shrink: 0;
     display: inline-block;
+    flex-shrink: 0;
   }
 
   .legend-free { background: #22c55e; }
   .legend-yours { background: #3b82f6; }
   .legend-taken { background: #ef4444; }
 
-  .booking-guide-title {
-    font-weight: 700;
-    font-size: var(--text-sm);
-    margin: var(--space-5) 0 var(--space-2) 0;
+  /* ══════════ CALENDAR MODALS ══════════ */
+  .calendar-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    backdrop-filter: blur(4px);
+  }
+
+  .calendar-modal.show { display: flex; }
+
+  .calendar-modal-box {
+    background: var(--color-bg, #fff);
+    max-width: 760px;
+    width: 100%;
+    max-height: 92vh;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid oklch(from var(--color-text) l c h / 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: modalFadeIn 0.2s ease-out;
+  }
+
+  .calendar-modal-head {
+    padding: var(--space-4) var(--space-5);
+    border-bottom: 1px solid oklch(from var(--color-text) l c h / 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .calendar-modal-head h3 { margin: 0; font-size: 1.15rem; font-weight: 600; }
+
+  .calendar-modal-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    line-height: 1;
+  }
+
+  .calendar-modal-body {
+    padding: 0;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .cal-embed-wrap { width: 100%; }
+  .cal-embed-wrap iframe, .cal-embed-wrap div { width: 100% !important; }
+
+  /* Management calendar: clip SuperSaaS's own header bar for a cleaner look */
+  .cal-iframe-clip {
+    position: relative;
+    height: 680px;
+    overflow: hidden;
+  }
+
+  .cal-iframe-clip iframe {
+    position: absolute;
+    top: -55px;
+    left: 0;
+    width: 100%;
+    height: calc(100% + 55px);
+    border: none;
+    display: block;
+  }
+
+  /* Booking widget: no clip needed, it's already chrome-free */
+  #book-modal .cal-embed-wrap { min-height: 650px; padding: var(--space-5); }
+
+  @media (max-width: 768px) {
+    .cal-iframe-clip { height: 520px; }
+    #book-modal .cal-embed-wrap { min-height: 560px; padding: var(--space-4); }
+  }
+
+  @keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 </style>
 </head>
@@ -125,48 +285,148 @@
 
 <main class="page-wrapper">
 
-  <section class="cal-embed-section" id="calendar" aria-labelledby="cal-heading">
-    <div class="cal-embed-inner">
-      <div class="cal-split">
+  <section class="lessons-hero" aria-labelledby="bookings-heading">
+    <div class="lessons-hero-inner">
+      <span class="section-label reveal" data-i18n="bookings_hero_label">Calendar</span>
+      <h1 class="section-title reveal" id="bookings-heading" data-i18n="bookings_hero_title">Book your lesson in seconds.</h1>
+      <p class="lessons-intro reveal" data-i18n="bookings_hero_intro">Reserve a new time slot or manage your existing bookings — both from one screen.</p>
 
-        <div class="cal-split-left">
-          <span class="section-label reveal" data-i18n="cal_label">Calendar</span>
-          <h2 class="section-title reveal" id="cal-heading" data-i18n="bookingstitle">Manage your lessons</h2>
-          <p class="reveal" data-i18n="bookingsloginhint">To manage your bookings, please click the <strong>Register or Sign in</strong> button at the <strong>top right corner</strong> of the calendar panel below.</p>
+      <div class="booking-cards">
 
-          <!-- Tek takvim, kredi mantığı -->
-          <div class="booking-info-box reveal">
-            <div class="booking-info-divider"></div>
-            <div class="booking-info-row">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-              <span data-i18n-html="booking_info_credits">No credits yet? Purchase a package first — after payment, your account is credited automatically. <a href="./lessons.html" data-i18n="booking_info_credits_link">See lesson packages</a>.</span>
-            </div>
+        <!-- CARD 1: New Booking -->
+        <div class="booking-card reveal">
+          <div class="booking-card-media">
+            <img src="./assets/img/new-booking.svg" alt="" aria-hidden="true" loading="lazy">
           </div>
-
-
-          <div class="booking-guide-title" data-i18n="bookings_guide_title">How it works</div>
-          <p class="reveal" data-i18n="bookingsintro">Once logged in, you can:</p>
-          <ul style="font-size: var(--text-sm); color: var(--color-text-muted); padding-left: 1.2em; display:flex; flex-direction:column; gap:6px;">
-            <li data-i18n="bookingsli0">Simply book a slot and your credits are deducted automatically. Each lesson <strong>costs 1 credit</strong>.</li>
-			<li data-i18n="bookingsli1">View all your upcoming and past lessons.</li>
-            <li data-i18n="bookingsli2">Change a booking by deleting your current reservation and selecting a new available time slot (at least 24 hours in advance).</li>
-            <li data-i18n="bookingsli3">Check your remaining lesson balance in your account settings.</li>
-			
-          </ul>
+          <div class="booking-card-heading">
+            <h2 data-i18n="book_card_title">New Booking</h2>
+            <p data-i18n="book_card_sub">Pick a day and time that works for you — instantly.</p>
+          </div>
+          <div class="booking-card-body">
+            <ul class="booking-card-info">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span data-i18n="book_card_f1">Choose an open slot from the live, real-time calendar</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span data-i18n="book_card_f2">Book instantly with a single lesson or your credit package</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span data-i18n="book_card_f3">Get your confirmation by email right away</span>
+              </li>
+            </ul>
+            <p class="booking-card-note" data-i18n-html="book_card_note">No credits yet? <a href="./lessons.html">Browse lesson packages</a> — your account is credited automatically after purchase.</p>
+            <button type="button" class="booking-cta-btn" id="open-book-modal">
+              <span data-i18n="book_card_cta">Open Calendar</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </div>
         </div>
 
-        <div class="cal-split-right">
-          <div class="cal-embed-wrap">
-            <script src="https://cdn.supersaas.net/widget.js"></script>
-            <script class="supersaas-widget">var supersaas = new SuperSaaS("624669:turkofil","829439:Türkçe_dersleri",{"widget_type":"frame","menu":"show","autoselect":"first_available"})</script>
+        <!-- CARD 2: Manage Bookings -->
+        <div class="booking-card reveal">
+          <div class="booking-card-media">
+            <img src="./assets/img/manage-bookings.svg" alt="" aria-hidden="true" loading="lazy">
+          </div>
+          <div class="booking-card-heading">
+            <h2 data-i18n="manage_card_title">Manage Bookings</h2>
+            <p data-i18n="manage_card_sub">View, reschedule, or cancel your lessons.</p>
+          </div>
+          <div class="booking-card-body">
+            <ul class="booking-card-info">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span data-i18n="manage_card_f1">See all your upcoming and past lessons</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span data-i18n="manage_card_f2">Reschedule or cancel up to 24 hours before your lesson</span>
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                <span data-i18n="manage_card_f3">Track your remaining credits in your account settings</span>
+              </li>
+            </ul>
+            <p class="booking-card-note" data-i18n="manage_card_hint">Sign in with the "Register or Sign in" button inside the calendar to see your account.</p>
+            <button type="button" class="booking-cta-btn" id="open-manage-modal">
+              <span data-i18n="manage_card_cta">Open My Bookings</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
           </div>
         </div>
 
       </div>
+
     </div>
   </section>
 
 </main>
+
+<!-- BOOK A SLOT MODAL -->
+<div id="book-modal" class="calendar-modal">
+  <div class="calendar-modal-box">
+    <div class="calendar-modal-head">
+      <h3 data-i18n="modal_book_title">Book a Lesson</h3>
+      <button class="calendar-modal-close" id="book-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="calendar-modal-body">
+      <div class="cal-embed-wrap">
+        <script src="https://cdn.supersaas.net/widget.js"></script>
+        <script class="supersaas-widget">
+          var supersaas = new SuperSaaS("624669:turkofil","829439:Türkçe_dersleri",{"widget_type":"frame","menu":"show","modal_width":"500px","slot_view":"btn","legend":"show"});
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MANAGE BOOKINGS MODAL -->
+<div id="manage-modal" class="calendar-modal">
+  <div class="calendar-modal-box">
+    <div class="calendar-modal-head">
+      <h3 data-i18n="modal_manage_title">Manage Bookings</h3>
+      <button class="calendar-modal-close" id="manage-modal-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="calendar-modal-body">
+      <div class="cal-embed-wrap">
+        <div class="cal-iframe-clip">
+          <iframe
+            src="https://www.supersaas.com/schedule/turkofil/Türkçe_dersleri"
+            title="Turkofil lesson calendar"
+            id="bookings-iframe">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const bookModal = document.getElementById('book-modal');
+    const manageModal = document.getElementById('manage-modal');
+
+    const openModal = (modal) => { modal.classList.add('show'); document.body.style.overflow = 'hidden'; };
+    const closeModal = (modal) => { modal.classList.remove('show'); document.body.style.overflow = ''; };
+
+    document.getElementById('open-book-modal').addEventListener('click', () => openModal(bookModal));
+    document.getElementById('open-manage-modal').addEventListener('click', () => openModal(manageModal));
+    document.getElementById('book-modal-close').addEventListener('click', () => closeModal(bookModal));
+    document.getElementById('manage-modal-close').addEventListener('click', () => closeModal(manageModal));
+
+    [bookModal, manageModal].forEach((modal) => {
+      modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(modal); });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      if (bookModal.classList.contains('show')) closeModal(bookModal);
+      if (manageModal.classList.contains('show')) closeModal(manageModal);
+    });
+  });
+</script>
 
 <script src="./assets/js/components.js"></script>
 <script src="./assets/js/i18n/common.js"></script>
