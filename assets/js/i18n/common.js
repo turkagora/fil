@@ -4,7 +4,7 @@ window.i18nCommon = {
     hero_eyebrow: "Yabancılar İçin Türkçe Öğretmeni", hero_title_1: "Türkçeyi", hero_title_2: "zorlanmadan", hero_title_3: "öğren.",
     hero_subtitle: "Canlı birebir derslerle kendi hızında konuşmayı, okumayı ve yazmayı öğren.",
     hero_cta: "Paketleri İncele", hero_cta2: "Seviye Testi", hero_bmc: "Destek Ol",
-    hero_follow: "Instagram'da Takip Et", hero_social_label: "Sosyal Medya",
+    hero_follow: "Instagram'da Takip Et", hero_social_label: "Sosyal Medya",hero_contact: "İletişim",
     bio_label: "Hakkımda", bio_title: "Merhaba, ben Tayfun.",
     bio_intro: "Yabancılara Türkçe öğretmek benim için sadece bir meslek değil, farklı kültürlerle bağ kurmanın en güzel yolu.",
     bio_p1: "2016'da Marmara Üniversitesi Fransızca Öğretmenliği bölümünden mezun oldum. Öğretmenlik kariyerime İstanbul'un en köklü okullarından Saint-Joseph Fransız Lisesi'nde yaptığım stajla adım attım. Böylesine nitelikli ve dinamik bir ortamda çalışmak, bana dil eğitimine dair çok güçlü bir temel kazandırdı.",
@@ -13,14 +13,16 @@ window.i18nCommon = {
     bio_tags: ["A1–C1 Seviyeleri", "Canlı Birebir", "Çevrimiçi", "Konuşma Odaklı", "Kültür ve Dil"],
     footer_copy: "© 2026 Turkofil. Tüm hakları saklıdır.", footer_privacy: "Gizlilik Bildirimi",
     reviews_label: "Öğrenci Yorumları", reviews_title: "Öğrencilerim ne diyor?",
-    bmc: "Bana bir kahve ısmarlamak ister misin? ☕"
+    bmc: "Bana bir kahve ısmarlamak ister misin? ☕",
+	
+	footer_contact: "İletişim"
   },
   EN: {
     nav_home: "Home", nav_bio: "About Me", nav_lessons: "Lessons", navbookings: "My Bookings",
     hero_eyebrow: "Turkish Language Tutor", hero_title_1: "Learn Turkish", hero_title_2: "the natural", hero_title_3: "way.",
     hero_subtitle: "Master speaking, reading, and writing with live one-on-one lessons tailored to your pace.",
     hero_cta: "Lesson Packages", hero_cta2: "Placement Test", hero_bmc: "Support My Work",
-    hero_follow: "Follow me on Instagram", hero_social_label: "Socials",
+    hero_follow: "Follow me on Instagram", hero_social_label: "Socials",hero_contact: "Contact us",
     bio_label: "About Me", bio_title: "Hello, I'm Tayfun.",
     bio_intro: "I am a teacher of Turkish as a foreign language, deeply passionate about languages and intercultural exchange.",
     bio_p1: "I graduated in 2016 from Marmara University in Istanbul with a degree in Teaching French as a Foreign Language (FLE). I then completed a pedagogical internship at the prestigious Saint-Joseph French High School in Istanbul, gaining valuable teaching experience in a highly demanding and stimulating francophone environment.",
@@ -29,14 +31,16 @@ window.i18nCommon = {
     bio_tags: ["A1–C1 Levels", "Live 1-on-1", "Online", "Conversation-driven", "Culture & Language"],
     footer_copy: "© 2026 Turkofil. All rights reserved.", footer_privacy: "Privacy Notice",
     reviews_label: "Student Reviews", reviews_title: "What my students say",
-    bmc: "Buy me a coffee ☕"
+    bmc: "Buy me a coffee ☕",
+	
+	footer_contact: "Contact us"
   },
   FR: {
     nav_home: "Accueil", nav_bio: "À propos", nav_lessons: "Cours", navbookings: "Mes réservations",
     hero_eyebrow: "Professeur de turc", hero_title_1: "Le turc", hero_title_2: "sans peine", hero_title_3: "mais avec aisance.",
     hero_subtitle: "Expression orale, lecture et écriture — des cours particuliers en direct, à ton propre rythme.",
     hero_cta: "Découvrir les offres", hero_cta2: "Test de niveau", hero_bmc: "Soutenir mon travail",
-    hero_follow: "Suis-moi sur Instagram", hero_social_label: "Réseaux",
+    hero_follow: "Suis-moi sur Instagram", hero_social_label: "Réseaux",hero_contact: "Contacter",
     bio_label: "À propos", bio_title: "Bonjour, je suis Tayfun.",
     bio_intro: "Je suis enseignant de turc langue étrangère, passionné par les langues et la transmission interculturelle.",
     bio_p1: "Diplômé en 2016 de l'Université de Marmara à Istanbul, j'y ai obtenu une licence en enseignement du français langue étrangère (FLE). J'ai ensuite effectué un stage pédagogique au prestigieux Lycée Français Saint-Joseph d'Istanbul, où j'ai eu l'occasion d'enseigner dans un environnement francophone exigeant et stimulant.",
@@ -45,6 +49,8 @@ window.i18nCommon = {
     bio_tags: ["Niveaux A1–C1", "1-à-1 en direct", "En ligne", "Axé sur la conversation", "Culture & Langue"],
     footer_copy: "© 2026 Turkofil. Tous droits réservés.", footer_privacy: "Avis de confidentialité",
     reviews_label: "Avis des Étudiants", reviews_title: "Ce que disent mes élèves",
-    bmc: "M'offrir un café ☕"
+    bmc: "M'offrir un café ☕",
+	
+	footer_contact: "Contacter"
   }
 };
