@@ -149,7 +149,7 @@ function injectFooter() {
     </a>
 <nav class="footer-links" aria-label="Footer navigation">
   ${buildNavLinks()}
-  <a href="./privacy.html" data-i18n="footer_privacy">Privacy Notice</a>
+  <a href="./privacy.html" data-i18n="footer_privacy">Privacy Notice</a> <a href="./contact.html" data-i18n="footer_contact">Contact</a>
 </nav>
     <div class="footer-social">
       <a href="https://www.instagram.com/turkishwithturkofil/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
